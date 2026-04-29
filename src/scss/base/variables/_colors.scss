@@ -2,27 +2,24 @@
 //   THEME COLORS (customizable)
 // =================================
 
-// Brand
-$brand-main: #304ffe;
-$brand-alt: #1e3a8a;
-
 // Semantic UI
-$primary: $brand-main;
-$secondary: #64748b;
-$accent: #38bdf8;
+$primary: #304FFE;
+$secondary: #607D8B;
+$accent: #E3F2FD;
 
 // Layout / surface
-$bg-page: #fbfbfb;
+$bg-page: #eaf2ff;
 $bg-surface: #ffffff;
-$bg-section: #f5f5f5;
-$bg-feature: #eef2ff;
+
+$bg-section: $bg-surface;
+$bg-feature: $bg-surface;
 
 // Text colors
 $text-primary: #332d2d;
 $text-secondary: #4b5563;
 $text-muted: #6b7280;
 $text-inverse: #ffffff;
-$text-accent: #1e3a8a;
+$text-accent: #0D47A1;
 
 // =================================
 //   SYSTEM COLORS (do not change)
