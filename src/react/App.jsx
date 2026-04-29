@@ -1,7 +1,7 @@
 
 function App() {
   return (
-    <h1>React working</h1>
+    <main className="game-container"></main>
   )
 }
 
