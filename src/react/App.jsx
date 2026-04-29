@@ -1,7 +1,10 @@
+import Game from './components/features/Game/Game';
 
 function App() {
   return (
-    <main className="game-container"></main>
+    <main className="game-container">
+      <Game />
+    </main>
   )
 }
 
