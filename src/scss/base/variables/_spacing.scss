@@ -1,0 +1,39 @@
+@use 'sass:map';
+
+// =================================
+//   SPACING
+// =================================
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// =================================
+//   SPACING MAPS
+// =================================
+
+$spacing-map: (
+  0: 0,
+  1: $spacing-xs,
+  2: $spacing-sm,
+  3: $spacing-md,
+  4: $spacing-lg,
+  5: $spacing-xl,
+  6: $spacing-2xl
+);
+
+$spacing-map-extend: map.merge(
+  $spacing-map,
+  (
+    7: 3.5rem,
+    8: 4rem,
+    9: 5rem,
+    10: 6rem,
+    11: 8rem
+  )
+);
+
+$gap-map: $spacing-map !default;

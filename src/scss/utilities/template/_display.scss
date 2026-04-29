@@ -1,0 +1,16 @@
+@use '../../base/config' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   DISPLAY
+// =================================
+
+$display-values: (none, block, inline, inline-block);
+
+@include generate-utility(
+  $property: 'display',
+  $values: $display-values,
+  $class: 'd',
+  $important: true,
+  $responsive: $enable-display-responsive
+);

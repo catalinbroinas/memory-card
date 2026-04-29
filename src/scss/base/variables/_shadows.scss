@@ -1,0 +1,30 @@
+// =================================
+//  SHADOWS
+// =================================
+
+// Card & surfaces
+$shadow-xs: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.03);
+$shadow-sm: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+$shadow-md: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 2rem 3rem rgba(0, 0, 0, 0.12);
+
+$shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+
+// Map for shadow utilities
+$shadow-map: (
+  0: none,
+  1: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075),
+  2: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1),
+  3: 0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+  4: 0 1rem 1.5rem rgba(0, 0, 0, 0.2),
+  5: 0 1.5rem 2rem rgba(0, 0, 0, 0.25)
+);
+
+// Map for shadow-strong utilities
+$shadow-strong-map: (
+  1: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2),
+  2: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3),
+  3: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+  4: 0 1rem 1.5rem rgba(0, 0, 0, 0.5),
+  5: 0 1.5rem 2rem rgba(0, 0, 0, 0.6)
+);

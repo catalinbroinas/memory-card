@@ -1,0 +1,165 @@
+@use 'sass:color';
+@use 'sass:map';
+@use '../../base/variables/colors' as *;
+@use '../../base/variables/typography' as *;
+@use '../../base/variables/radius' as *;
+@use '../../base/variables/spacing' as *;
+
+// =================================
+//   FORM
+// =================================
+
+// Colors
+$form-bg: $bg-page;
+$form-color: $text-primary;
+$form-border: #607D8B;
+$form-border-focus: #455A64;
+
+// Typography
+$form-font-family: $font-text;
+$form-font-size: $fs-base;
+
+// Spacing
+$form-text-margin-bottom: $spacing-md;
+
+// Size
+$form-icon-size: $fs-lg;
+
+// =================================
+//   FORM - LAYOUT
+// =================================
+
+// Container - gap
+$form-gap: $spacing-lg;
+
+// Row - gap
+$form-row-gap: $spacing-md;
+$form-row-gap-lg: $spacing-lg;
+
+// Column - gap
+$form-col-gap: $spacing-lg;
+
+// Fieldset - gap
+$form-fieldset-gap-sm: $spacing-sm;
+$form-fieldset-gap-md: $spacing-md;
+$form-fieldset-gap-lg: $spacing-lg;
+$form-fieldset-gap-xl: $spacing-xl;
+$form-fieldset-gap-2xl: $spacing-2xl;
+
+// Fieldset - spacing
+$form-fieldset-padding: 0;
+$form-fieldset-margin: 0;
+
+// Fieldset - align
+$form-fieldset-align-items: flex-start;
+
+// Select group - gap
+$form-select-group-gap: $spacing-md;
+
+// Checkbox wrapper - gap
+$form-checkbox-gap: $spacing-sm;
+
+// Radio wrapper - gap
+$form-radio-gap: $spacing-sm;
+
+// Legend - margin
+$form-legend-margin-bottom-sm: $spacing-sm;
+$form-legend-margin-bottom-md: $spacing-md;
+$form-legend-margin-bottom-lg: $spacing-lg;
+$form-legend-margin-bottom-xl: $spacing-xl;
+$form-legend-margin-bottom-2xl: $spacing-2xl;
+
+// =================================
+//   FORM CONTROL
+// =================================
+
+// Colors
+$form-control-border-color: $form-border;
+$form-control-border-color-hover: color.scale($form-control-border-color, $lightness: -10%);
+$form-control-border-color-focus: $form-border-focus;
+
+$form-control-placeholder-color-focus: $text-muted;
+
+// Typography
+$form-control-placeholder-fs: $fs-sm;
+
+// Spacing
+$form-control-padding-top: 0.75rem;
+$form-control-padding-top-alt: 0.75rem;
+
+$form-control-padding: $form-control-padding-top 1rem;
+$form-control-padding-alt: $form-control-padding-top-alt 1rem $form-control-padding-top-alt 2.5rem;
+
+// =================================
+//   FORM LABEL
+// =================================
+
+// Colors
+$form-label-color: $text-secondary;
+$form-label-floating-color: $text-secondary;
+
+// Typography
+$form-label-font-size: $fs-base;
+$form-label-floating-font-size: $fs-sm;
+
+// Spacing
+$form-label-left: 1rem;
+$form-label-left-alt: 2.5rem;
+
+// =================================
+//   FORM SELECT
+// =================================
+
+// Colors
+$form-select-border-color: $form-border;
+$form-select-border-color-focus: $form-border-focus;
+
+// Spacing
+$form-select-padding: 0.5rem 1rem;
+
+// Radius
+$form-select-radius: map.get($rounded-map, sm);
+
+// Arrow
+$form-select-arrow-size: 1rem;
+$form-select-arrow-right: 1rem;
+$form-select-arrow-padding: 2.5rem;
+
+// =================================
+//   FORM CHECKBOX
+// =================================
+
+// Checkbox
+$checkbox-size: 1.5rem;
+$check-width: $checkbox-size * 0.25;
+$check-height: $checkbox-size * 0.5;
+
+// Colors
+$checkbox-bg: #fff;
+$checkbox-bg-checked: $form-border-focus;
+$checkbox-checkmark-color: #fff;
+
+// Border
+$checkbox-border: $form-border;
+$checkbox-border-radius: map.get($rounded-map, sm);
+
+// Label
+$checkbox-label-color: $form-border-focus;
+
+// =================================
+//   FORM RADIO
+// =================================
+
+// Radio
+$radio-size: 1.5rem;
+$radio-dot-size: $radio-size * 0.45;
+
+// Colors
+$radio-bg: #fff;
+$radio-bg-checked: $form-border-focus;
+
+// Border
+$radio-border: $form-border;
+
+// Label
+$radio-label-color: $form-border-focus;

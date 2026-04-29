@@ -1,0 +1,25 @@
+@use '../../base/variables/spacing' as *;
+@use '../../base/config' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   GAP UTILITIES MIXIN
+// =================================
+
+@mixin gap-util($property, $values, $class: null) {
+  @include generate-utility(
+    $property: $property,
+    $values: $values,
+    $class: $class,
+    $important: true,
+    $responsive: $enable-gap-responsive
+  );
+}
+
+// =================================
+//   GAP UTILITIES
+// =================================
+
+@include gap-util('gap', $gap-map);
+@include gap-util('column-gap', $gap-map, 'gap-x');
+@include gap-util('row-gap', $gap-map, 'gap-y');

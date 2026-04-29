@@ -1,0 +1,86 @@
+// =================================
+//   TYPOGRAPHY UTILITY
+// =================================
+
+@use 'sass:map';
+@use '../../base/variables/typography' as *;
+@use '../../base/variables/colors' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   MAP
+// =================================
+
+$typography-map: (
+  heading-1: (
+    family: $font-title,
+    weight: 700,
+    size: $fs-3xl,
+    color: $text-primary,
+    line: 1.1
+  ),
+
+  heading-2: (
+    family: $font-title,
+    weight: 700,
+    size: $fs-2xl,
+    color: $text-primary,
+    line: 1.3
+  ),
+
+  heading-3: (
+    family: $font-title,
+    weight: 600,
+    size: $fs-xl,
+    color: $text-secondary,
+    line: 1.4
+  ),
+
+  text: (
+    family: $font-text,
+    weight: 400,
+    size: $fs-base,
+    color: $text-secondary,
+    line: 1.6
+  ),
+
+  text-muted: (
+    family: $font-text,
+    weight: 400,
+    size: $fs-base,
+    color: $text-muted,
+    line: 1.6
+  ),
+
+  text-lead: (
+    family: $font-text,
+    weight: 400,
+    size: $fs-lg,
+    color: $text-secondary,
+    line: 1.8
+  ),
+
+  text-small: (
+    family: $font-text,
+    weight: 400,
+    size: $fs-sm,
+    color: $text-secondary,
+    line: 1.5
+  )
+);
+
+// =================================
+//   CLASSES
+// =================================
+
+@each $name, $config in $typography-map {
+  .#{$name} {
+    @include text-style(
+      map.get($config, family),
+      map.get($config, weight),
+      map.get($config, size),
+      map.get($config, color),
+      map.get($config, line)
+    );
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../base/variables/typography' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   TEXT UTILITIES
+// =================================
+
+// Alignments
+$text-align-values: (start, center, end);
+
+@include generate-utilities('text-align', $text-align-values, 'text');
+
+// Transforms
+$text-transform-values: (lowercase, uppercase, capitalize);
+
+@include generate-utilities('text-transform', $text-transform-values, 'text');
+
+// Font weight
+$font-weight-values: (
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+@include generate-utilities('font-weight', $font-weight-values, 'fw');
+
+// Text sizes (font-size + line-height)
+.text-sm  { font-size: $fs-sm; line-height: 1.5; }
+.text-md  { font-size: $fs-base; line-height: 1.6; }
+.text-lg  { font-size: $fs-lg; line-height: 1.5; }

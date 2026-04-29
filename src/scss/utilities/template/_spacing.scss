@@ -1,0 +1,64 @@
+@use '../../base/variables/spacing' as *;
+@use '../../base/config' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   SPACING UTILITIES MIXIN
+// =================================
+
+@mixin spacing-util($property, $values, $class) {
+  @include generate-utility(
+    $property: $property,
+    $values: $values,
+    $class: $class,
+    $important: true,
+    $responsive: $enable-spacing-responsive
+  );
+}
+
+// =================================
+//   MARGINS - CORE
+// =================================
+
+@include spacing-util('margin', $spacing-map, 'm');
+@include spacing-util('margin-bottom', $spacing-map-extend, 'mb');
+@include spacing-util('margin-right', $spacing-map, 'me');
+
+// Margin auto
+.m-auto   { margin: auto !important; }
+.mx-auto  { margin: 0 auto !important; }
+.my-auto  { margin: auto 0 !important; }
+.ms-auto  { margin-left: auto !important; }
+.me-auto  {  margin-right: auto !important; }
+.mb-auto  { margin-bottom: auto !important; }
+.mt-auto  { margin-top: auto !important; }
+
+// =================================
+//   MARGINS - EXTEND
+// =================================
+
+@if $enable-spacing-extended {
+  @include spacing-util('margin-left', $spacing-map, 'ms');
+  @include spacing-util('margin-top', $spacing-map, 'mt');
+  @include spacing-util('margin-inline', $spacing-map, 'mx');
+  @include spacing-util('margin-block', $spacing-map, 'my');
+}
+
+// =================================
+//   PADDINGS - CORE
+// =================================
+
+@include spacing-util('padding', $spacing-map, 'p');
+@include spacing-util('padding-inline', $spacing-map, 'px');
+@include spacing-util('padding-block', $spacing-map, 'py');
+
+// =================================
+//   PADDINGS - EXTEND
+// =================================
+
+@if $enable-spacing-extended {
+  @include spacing-util('padding-top', $spacing-map, 'pt');
+  @include spacing-util('padding-bottom', $spacing-map, 'pb');
+  @include spacing-util('padding-left', $spacing-map, 'ps');
+  @include spacing-util('padding-right', $spacing-map, 'pe');
+}

@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../../base/variables/shadows' as *;
+
+// =================================
+//   SHADOWS (MDB 5)
+// =================================
+
+// UI Light
+@each $key, $shadow in $shadow-map {
+  .shadow-#{$key} {
+    box-shadow: $shadow !important;
+  }
+}
+
+// UI Dark
+@each $key, $shadow in $shadow-strong-map {
+  .shadow-#{$key}-strong {
+    box-shadow: $shadow !important;
+  }
+}
+
+// Inset box shadow
+.shadow-inset { box-shadow: $shadow-inset !important; }

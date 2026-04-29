@@ -1,0 +1,21 @@
+@use 'components-mixins' as components;
+
+// =================================
+//   ALERTS
+// =================================
+
+.alert-info {
+  @include components.alert-info();
+}
+
+.alert-success {
+  @include components.alert-success();
+}
+
+.alert-warning {
+  @include components.alert-warning();
+}
+
+.alert-danger {
+  @include components.alert-danger();
+}

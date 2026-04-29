@@ -1,0 +1,234 @@
+@use '../../base/mixins' as *;
+@use './variables' as vars;
+@use 'mixins' as forms;
+
+// =================================
+//   LAYOUT
+// =================================
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$form-gap;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: vars.$form-row-gap;
+  width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    gap: vars.$form-row-gap-lg;
+  }
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$form-col-gap;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.form-column--auto {
+  flex: 0 0 auto;
+}
+
+.form-outline {
+  max-width: 680px;
+  flex-grow: 1;
+  position: relative;
+}
+
+.form-fieldset {
+  @include forms.form-fieldset();
+}
+
+.form-fieldset--sm {
+  @include forms.form-fieldset($gap: vars.$form-fieldset-gap-sm);
+}
+
+.form-fieldset--lg {
+  @include forms.form-fieldset($gap: vars.$form-fieldset-gap-lg);
+}
+
+.form-fieldset--xl {
+  @include forms.form-fieldset($gap: vars.$form-fieldset-gap-xl);
+}
+
+.form-fieldset--2xl {
+  @include forms.form-fieldset($gap: vars.$form-fieldset-gap-2xl);
+}
+
+// =================================
+//   TYPOGRAPHY
+// =================================
+
+.form-legend {
+  @include forms.form-text($margin-bottom: vars.$form-legend-margin-bottom-md);
+}
+
+.form-legend--sm {
+  @include forms.form-text($margin-bottom: vars.$form-legend-margin-bottom-sm);
+}
+
+.form-legend--lg {
+  @include forms.form-text($margin-bottom: vars.$form-legend-margin-bottom-lg);
+}
+
+.form-legend--lg2 {
+  @include forms.form-text($margin-bottom: vars.$form-legend-margin-bottom-xl);
+}
+
+.form-legend--xl {
+  @include forms.form-text($margin-bottom: vars.$form-legend-margin-bottom-2xl);
+}
+
+.form-label-text {
+  @include forms.form-text(
+    $margin-bottom: 0,
+    $font-family: vars.$form-font-family,
+    $font-weight: 500
+  );
+}
+
+// =================================
+//   ICON
+// =================================
+
+.form-icon {
+  display: flex;
+  align-self: center;
+  font-size: vars.$form-icon-size;
+  color: vars.$form-border;
+  transition: color 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.form-row:focus-within .form-icon {
+  color: vars.$form-border-focus;
+  transform: scale(1.2);
+}
+
+// =================================
+//   INPUT FIELDS
+// =================================
+
+.form-control {
+  @include forms.form-control();
+
+  &::placeholder {
+    font-size: vars.$form-control-placeholder-fs;
+    color: transparent;
+    opacity: 0;
+    transition: color 0.3s ease-in, opacity 0.3s ease-in;
+  }
+
+  &:focus::placeholder {
+    color: vars.$form-control-placeholder-color-focus;
+    opacity: 0.7;
+  }
+}
+
+.form-label {
+  @include forms.form-label(false, true);
+}
+
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+  @include forms.form-label(false, false);
+}
+
+.form-control.is-disabled {
+  @include is-disabled();
+}
+
+.form-control-group {
+  position: relative;
+  width: 100%;
+
+  .icon {
+    position: absolute;
+    left: vars.$form-label-left;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  &:focus-within .icon {
+    opacity: 1;
+  }
+
+  .form-control {
+    @include forms.form-control(true);
+  }
+
+  .form-label {
+    @include forms.form-label(true, true);
+  }
+
+  .form-control:focus + .form-label,
+  .form-control:not(:placeholder-shown) + .form-label {
+    @include forms.form-label(true, false);
+  }
+}
+
+// =================================
+//   CHECKBOX
+// =================================
+
+.checkbox-wrapper {
+  @include forms.checkbox-wrapper;
+}
+
+.checkbox-input {
+  @include forms.checkbox-input();
+}
+
+.checkbox-label {
+  @include forms.checkbox-label();
+}
+
+.checkbox-input:disabled + .checkbox-label {
+  @include is-disabled();
+}
+
+// =================================
+//   RADIO
+// =================================
+
+.form-check {
+  @include forms.form-check;
+}
+
+.form-check-input {
+  @include forms.form-check-input();
+}
+
+.form-check-label {
+  @include forms.form-check-label();
+}
+
+.form-check-input:disabled + .form-check-label {
+  @include is-disabled();
+}
+
+// =================================
+//   SELECT
+// =================================
+
+.form-select-group {
+  display: flex;
+  align-items: center;
+  gap: vars.$form-select-group-gap;
+
+  .form-label-text { font-weight: 600 }
+}
+
+.form-select {
+  @include forms.form-select();
+}

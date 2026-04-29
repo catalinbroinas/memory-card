@@ -1,0 +1,26 @@
+@use '../../base/variables/colors' as *;
+
+// =================================
+//   BACKGROUND COLORS
+// =================================
+
+// Layout
+.bg-page    { background-color: $bg-page; }
+.bg-surface { background-color: $bg-surface; }
+.bg-section { background-color: $bg-section; }
+.bg-feature  { background-color: $bg-feature; }
+
+// Semantic
+.bg-primary   { background-color: $primary; }
+.bg-secondary { background-color: $secondary; }
+.bg-accent    { background-color: $accent; }
+
+// =================================
+//   TEXT COLORS
+// =================================
+
+.text-primary   { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-accent    { color: $text-accent; }
+.text-muted     { color: $text-muted; }
+.text-inverse   { color: $text-inverse; }

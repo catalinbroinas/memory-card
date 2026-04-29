@@ -1,0 +1,124 @@
+// =================================
+//   COMPONENTS VARIABLES
+// =================================
+/* 
+  This file contains component-level design tokens.
+  Built on top of base variables.
+  Keep values simple, consistent, and easy to override.
+*/
+
+// Imports
+@use 'sass:color';
+@use 'sass:map';
+@use '../../base/variables' as *;
+
+// =================================
+// ALERTS
+// =================================
+
+// General
+$alert-font-size: $fs-base;
+$alert-bg: $bg-page;
+$alert-color: $text-secondary;
+$alert-padding: $spacing-md;
+$alert-gap: $spacing-sm;
+$alert-radius: map.get($rounded-map, md);
+$alert-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+// Border base
+$alert-border-width: 1px;
+$alert-border-style: solid;
+
+// Border variants
+$alert-border-none: none;
+$alert-info-border: $alert-border-width $alert-border-style $info-border;
+$alert-success-border: $alert-border-width $alert-border-style $success-border;
+$alert-danger-border: $alert-border-width $alert-border-style $danger-border;
+$alert-warning-border: $alert-border-width $alert-border-style $warning-border;
+
+// =================================
+// BUTTONS - GENERAL
+// =================================
+
+$btn-font-family: $font-title;
+$btn-focus-color: rgba($primary, 0.4);
+
+// =================================
+// BUTTONS - VARIANTS
+// =================================
+
+// Primary
+$btn-primary-bg: $primary;
+$btn-primary-color: $text-inverse;
+$btn-primary-shadow: 0 2px 6px rgba($btn-primary-bg, 0.25);
+$btn-primary-hover-shadow: 0 4px 12px rgba($btn-primary-bg, 0.35);
+
+// Secondary
+$btn-secondary-bg: color.scale($primary, $lightness: 90%);
+$btn-secondary-color: color.scale($primary, $lightness: -10%);
+
+// Outline
+$btn-primary-outline-bg: transparent;
+$btn-primary-outline-color: $primary;
+$btn-primary-outline-border: 2px solid $primary;
+$btn-primary-outline-hover-bg: color.scale($primary, $lightness: 90%);
+
+// Tertiary
+$btn-tertiary-bg: $bg-surface;
+$btn-tertiary-color: $text-primary;
+$btn-tertiary-border: 1px solid $border-default;
+
+// =================================
+// BUTTONS - SIZES
+// =================================
+
+// Small
+$btn-sm-py: 0.375rem;
+$btn-sm-px: 0.75rem;
+$btn-sm-fs: $fs-sm;
+$btn-sm-radius: map.get($rounded-map, sm);
+
+// Medium (default)
+$btn-md-py: 0.5rem;
+$btn-md-px: 1rem;
+$btn-md-fs: $fs-base;
+$btn-md-radius: map.get($rounded-map, md);
+
+// Large
+$btn-lg-py: 0.75rem;
+$btn-lg-px: 1.5rem;
+$btn-lg-fs: $fs-lg;
+$btn-lg-radius: map.get($rounded-map, lg);
+
+// =================================
+// CARDS
+// =================================
+
+// Typography
+$card-title-fs: calc($fs-lg + 0.1rem);  // for better visual hierarchy
+$card-subtitle-fs: calc($fs-base + 0.125rem);
+$card-text-fs: $fs-base;
+
+// Background
+$card-bg: $bg-surface;
+$card-header-bg: $bg-page;
+$card-body-bg: $card-bg;
+$card-footer-bg: $bg-section;
+
+// Spacing
+$card-header-padding: 0.75rem $spacing-lg;
+$card-body-padding: $spacing-md $spacing-lg;
+$card-footer-padding: 0.75rem $spacing-lg;
+
+// Border
+$card-border-color: rgba(0, 0, 0, 0.125);
+$card-border: 1px solid $card-border-color;
+$card-header-border: $card-border;
+$card-footer-border: $card-border;
+
+// Radius
+$card-radius: map.get($rounded-map, md);
+
+// Shadow
+$card-shadow: $shadow-sm;
+$card-hover-shadow: null;

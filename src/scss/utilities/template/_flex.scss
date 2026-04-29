@@ -1,0 +1,106 @@
+// =================================
+//   FLEXBOX UTILITIES
+// =================================
+
+// Imports
+@use 'sass:map';
+@use '../../base/config' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   FLEXBOX UTILITIES MIXIN
+// =================================
+
+@mixin flex-util($property, $values, $class: null, $important: false) {
+  @include generate-utility(
+    $property: $property,
+    $values: $values,
+    $class: $class,
+    $important: $important,
+    $responsive: $enable-flex-responsive
+  );
+}
+
+// =================================
+//   MAPS
+// =================================
+
+$core-align: (
+  start: flex-start,
+  center: center,
+  end: flex-end
+);
+
+$justify-values: map.merge(
+  $core-align,
+  (
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly,
+  )
+);
+
+$align-values: map.merge(
+  $core-align,
+  (
+    baseline: baseline,
+    stretch: stretch
+  )
+);
+
+// =================================
+//   DISPLAY & DIRECTION
+// =================================
+
+$flex-display-values: (flex);
+$flex-direction-values: (column, row);
+
+@include flex-util('display', $flex-display-values, 'd', true);
+@include flex-util('flex-direction', $flex-direction-values, 'flex');
+
+// =================================
+//   WRAPPING
+// =================================
+
+$flex-wrap-values: (wrap, nowrap);
+
+@include flex-util('flex-wrap', $flex-wrap-values, 'flex');
+
+// =================================
+//   ALIGNMENT
+// =================================
+
+@include flex-util(
+  $property: 'justify-content',
+  $values: $justify-values,
+  $important: true
+);
+
+@include flex-util(
+  $property: 'align-items',
+  $values: $align-values,
+  $important: true
+);
+
+@include flex-util(
+  $property: 'align-self',
+  $values: $align-values,
+  $important: true
+);
+
+.flex-center {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+// =================================
+//  FLEX BEHAVIOR
+// =================================
+
+$flex-behavior: (
+  0: 0,
+  1: 1
+);
+
+@include flex-util('flex-grow', $flex-behavior);
+@include flex-util('flex-shrink', $flex-behavior);

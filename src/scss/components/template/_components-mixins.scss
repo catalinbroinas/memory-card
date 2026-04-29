@@ -1,0 +1,204 @@
+// =================================
+//   COMPONENTS MIXINS
+// =================================
+
+// Imports
+@use 'sass:color';
+@use '../../base/variables' as *;
+@use './variables' as vars;
+
+// =================================
+//   BUTTONS
+// =================================
+
+@mixin button-base(
+  $bg: $bg-surface,
+  $color: $text-primary,
+  $hover-bg: color.scale($bg, $lightness: -5%),
+  $hover-color: $color,
+  $border: none,
+  $shadow: none,
+  $shadow-hover: $shadow,
+  $focus-color: vars.$btn-focus-color
+) {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  text-align: center;
+  padding: vars.$btn-md-py vars.$btn-md-px;
+  background-color: $bg;
+  color: $color;
+  font-size: vars.$btn-md-fs;
+  font-family: vars.$btn-font-family;
+  font-weight: 500;
+  border: $border;
+  border-radius: vars.$btn-md-radius;
+  box-shadow: $shadow;
+
+  transition-property: background-color, color, box-shadow;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    background-color: $hover-bg;
+    color: $hover-color;
+    box-shadow: $shadow-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $focus-color;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: color.scale($hover-bg, $lightness: -10%);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: $disabled-bg;
+    color: $disabled-text;
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+  }
+}
+
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $border-radius
+) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+// =================================
+//   CARDS
+// =================================
+
+@mixin card(
+  $bg: vars.$card-bg,
+  $radius: vars.$card-radius,
+  $border: vars.$card-border,
+  $shadow: vars.$card-shadow,
+  $shadow-hover: vars.$card-hover-shadow
+) {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $bg;
+  background-clip: border-box;
+  border: $border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  
+  @if $shadow-hover != null {
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: $shadow-hover;
+    }
+  }
+}
+
+@mixin card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@mixin card-header(
+  $bg: vars.$card-header-bg,
+  $padding: vars.$card-header-padding,
+  $border: vars.$card-header-border
+) {
+  padding: $padding;
+  background-color: $bg;
+  border-bottom: $border;
+}
+
+@mixin card-body ($padding: vars.$card-body-padding) {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: $padding;
+}
+
+@mixin card-footer(
+  $bg: vars.$card-footer-bg,
+  $padding: vars.$card-footer-padding,
+  $border: vars.$card-footer-border
+) {
+  padding: $padding;
+  background-color: $bg;
+  border-top: $border;
+}
+
+// =================================
+//   ALERTS - GENERAL
+// =================================
+
+@mixin alert(
+  $bg: vars.$alert-bg,
+  $color: vars.$alert-color,
+  $padding: vars.$alert-padding,
+  $rounded: vars.$alert-radius,
+  $border: vars.$alert-border-none,
+  $shadow: vars.$alert-shadow
+) {
+  display: flex;
+  align-items: center;
+  gap: vars.$alert-gap;
+  font-size: vars.$alert-font-size;
+  background-color: $bg;
+  color: $color;
+  padding: $padding;
+  border-radius: $rounded;
+  border: $border;
+  box-shadow: $shadow;
+}
+
+// =================================
+//   ALERTS - CONTEXTUAL
+// =================================
+
+@mixin alert-info {
+  @include alert(
+    $bg: $info-bg,
+    $color: $info-text,
+    $border: vars.$alert-info-border
+  );
+}
+
+@mixin alert-success {
+  @include alert(
+    $bg: $success-bg,
+    $color: $success-text,
+    $border: vars.$alert-success-border
+  );
+}
+
+@mixin alert-warning {
+  @include alert(
+    $bg: $warning-bg,
+    $color: $warning-text,
+    $border: vars.$alert-warning-border
+  );
+}
+
+@mixin alert-danger {
+  @include alert(
+    $bg: $danger-bg,
+    $color: $danger-text,
+    $border: vars.$alert-danger-border
+  );
+}

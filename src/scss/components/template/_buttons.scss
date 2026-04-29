@@ -1,0 +1,64 @@
+@use 'sass:color';
+@use '../../base/variables/typography' as *;
+@use '../../base/variables/radius' as *;
+@use 'variables' as vars;
+@use 'components-mixins' as components;
+
+// =================================
+//   BUTTONS
+// =================================
+
+.btn-primary {
+  @include components.button-base(
+    $bg: vars.$btn-primary-bg,
+    $color: vars.$btn-primary-color,
+    $shadow: vars.$btn-primary-shadow,
+    $shadow-hover: vars.$btn-primary-hover-shadow
+  );
+}
+
+.btn-secondary {
+  @include components.button-base(
+    $bg: vars.$btn-secondary-bg,
+    $color: vars.$btn-secondary-color
+  );
+}
+
+.btn-tertiary {
+  @include components.button-base(
+    $bg: vars.$btn-tertiary-bg,
+    $color: vars.$btn-tertiary-color,
+    $border: vars.$btn-tertiary-border
+  );
+}
+
+.btn-primary-outline {
+  @include components.button-base(
+    $bg: vars.$btn-primary-outline-bg,
+    $color: vars.$btn-primary-outline-color,
+    $hover-bg: vars.$btn-primary-outline-hover-bg,
+    $border: vars.$btn-primary-outline-border
+  );
+}
+
+// =================================
+//   SIZES
+// =================================
+
+.btn-sm {
+  @include components.button-size(
+    $padding-y: vars.$btn-sm-py,
+    $padding-x: vars.$btn-sm-px,
+    $font-size: vars.$btn-sm-fs,
+    $border-radius: vars.$btn-sm-radius
+  );
+}
+
+.btn-lg {
+  @include components.button-size(
+    $padding-y: vars.$btn-lg-py,
+    $padding-x: vars.$btn-lg-px,
+    $font-size: vars.$btn-lg-fs,
+    $border-radius: vars.$btn-lg-radius
+  );
+}

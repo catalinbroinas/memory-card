@@ -1,0 +1,29 @@
+@use 'sass:map';
+
+// =================================
+//   RADIUS (system)
+// =================================
+
+// Utility sizes (MDB-like)
+$radius-scale: (
+  0: 0,
+  1: 0.2rem,
+  2: 0.25rem,
+  3: 0.3rem,
+  4: 0.375rem,
+  5: 0.5rem,
+  6: 0.75rem,
+  7: 1rem,
+  8: 1.25rem,
+  9: 1.5rem
+);
+
+// Semantic sizes
+$rounded-map: (
+  xs: map.get($radius-scale, 2),
+  sm: map.get($radius-scale, 4),
+  md: map.get($radius-scale, 5),
+  lg: map.get($radius-scale, 6),
+  xl: map.get($radius-scale, 7),
+  2xl: map.get($radius-scale, 9)
+);

@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '../../base/variables/radius' as *;
+
+// =================================
+//   BORDERS
+// =================================
+
+.border-0 { border: none; }
+
+// =================================
+//   BORDER RADIUS
+// =================================
+
+// Semantic sizes (preferred for UI)
+@each $key, $radius in $rounded-map {
+  .rounded-#{$key} {
+    border-radius: $radius;
+  }
+}
+
+// Utility sizes (fine control, MDB-compatible)
+@each $key, $radius in $radius-scale {
+  .rounded-#{$key} {
+    border-radius: $radius;
+  }
+}
+
+// Special cases
+.rounded-pill   { border-radius: 50rem; }
+.rounded-circle { border-radius: 50%; }

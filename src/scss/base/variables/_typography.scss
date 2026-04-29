@@ -1,0 +1,40 @@
+// =================================
+//   TYPOGRAPHY CONFIG (customizable)
+// =================================
+
+// Fonts
+$font-title: Arial, Helvetica, sans-serif;
+$font-text: Verdana, Tahoma, sans-serif;
+
+// Base font
+$font-body: $font-text !default;
+
+// =================================
+//   TYPOGRAPHY SCALE (do not change)
+// =================================
+
+// Default size
+$fs-base: 1rem;
+
+// Default line height
+$lh-base: 1.6;
+
+// Font sizes
+$fs-xs: calc($fs-base * 0.75);
+$fs-sm: calc($fs-base * 0.875);
+$fs-lg: calc($fs-base * 1.25);
+$fs-xl: calc($fs-base * 1.5);
+$fs-2xl: calc($fs-base * 2);
+$fs-3xl: calc($fs-base * 3);
+$fs-4xl: calc($fs-base * 4);
+
+$font-sizes: (
+  xs: $fs-xs,
+  sm: $fs-sm,
+  base: $fs-base,
+  lg: $fs-lg,
+  xl: $fs-xl,
+  2xl: $fs-2xl,
+  3xl: $fs-3xl,
+  4xl: $fs-4xl
+);
