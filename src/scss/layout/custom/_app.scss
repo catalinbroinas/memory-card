@@ -1,0 +1,14 @@
+@use '../../base/variables/colors' as *;
+
+// =================================
+//  LAYOUT
+// =================================
+
+.game-container {
+  min-height: 100svh;
+  min-height: 100vh;
+  background-color: $bg-page;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
