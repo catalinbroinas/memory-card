@@ -1,0 +1,36 @@
+@use 'sass:map';
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   GAME
+// =================================
+
+.game {
+  background-color: $bg-surface;
+  min-height: 50svh;
+  max-width: 1000px;
+  width: 100%;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: map.get($rounded-map, lg);
+  box-shadow: $shadow-md;
+
+  @include media-breakpoint-down(md) {
+    padding: 1.5rem;
+    border-radius: 0;
+  }
+
+  &__title {
+    @include text-style(
+      $font-weight: 700,
+      $font-size: $fs-2xl,
+      $color: $text-accent,
+      $line-height: 1.2
+    );
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-bottom: $spacing-xl;
+  }
+}
