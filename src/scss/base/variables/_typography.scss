@@ -3,8 +3,10 @@
 // =================================
 
 // Fonts
-$font-title: Arial, Helvetica, sans-serif;
-$font-text: Verdana, Tahoma, sans-serif;
+$font: Arial, Helvetica, sans-serif;
+
+$font-title: $font;
+$font-text: $font;
 
 // Base font
 $font-body: $font-text !default;
