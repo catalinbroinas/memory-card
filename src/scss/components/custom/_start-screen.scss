@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '../../base/variables/colors' as *;
+@use '../../base/variables/typography' as *;
+@use '../../base/variables/spacing' as *;
+@use '../../base/variables/radius' as *;
+@use '../../base/mixins' as *;
+
+// =================================
+//   GAME INFO
+// =================================
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+
+  &__desc {
+    @include text-style(
+      $font-weight: 400,
+      $font-size: $fs-lg,
+      $color: $text-secondary,
+      $line-height: 1.8
+    );
+    
+    background-color: $accent;
+    padding: 1rem 2rem;
+    border-left: 2px solid $primary;
+    border-top-right-radius: map.get($rounded-map, md);
+    border-bottom-right-radius: map.get($rounded-map, md);
+    margin: 0;
+  }
+}
