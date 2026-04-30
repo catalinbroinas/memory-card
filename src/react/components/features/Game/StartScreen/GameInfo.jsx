@@ -7,7 +7,7 @@ function GameInfo() {
         Avoid clicking the same card twice and try to beat your high score.
       </p>
 
-      <button className="btn-primary">Play Game</button>
+      <button className="btn-primary btn-lg">Play Game</button>
     </div>
   );
 }
