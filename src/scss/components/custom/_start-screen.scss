@@ -1,7 +1,9 @@
 @use 'sass:map';
+@use 'sass:color';
 @use '../../base/variables/colors' as *;
 @use '../../base/variables/typography' as *;
 @use '../../base/variables/spacing' as *;
+@use '../../base/variables/shadows' as *;
 @use '../../base/variables/radius' as *;
 @use '../../base/mixins' as *;
 
@@ -22,12 +24,77 @@
       $color: $text-secondary,
       $line-height: 1.8
     );
-    
+
     background-color: $accent;
     padding: 1rem 2rem;
     border-left: 2px solid $primary;
     border-top-right-radius: map.get($rounded-map, md);
     border-bottom-right-radius: map.get($rounded-map, md);
+    margin: 0;
+  }
+}
+
+// =================================
+//   GAME DIFFICULTY
+// =================================
+
+.game-difficulty {
+  // background-color: yellow;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: $spacing-lg;
+
+  &__title {
+    @include text-style(
+      $font-weight: 600,
+      $font-size: $fs-lg,
+      $color: $text-secondary,
+      $line-height: 1.4
+    );
+    text-align: left;
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__card {
+    background-color: $accent;
+    text-align: center;
+    padding: 2rem;
+    border-radius: map.get($rounded-map, sm);
+    box-shadow: $shadow-xs;
+    transition: box-shadow 0.25s ease, background 0.25s ease;
+
+    &:hover {
+      box-shadow: $shadow-sm;
+      background-color: color.scale($accent, $lightness: -5%);
+    }
+  }
+
+  &__card-title {
+    @include text-style(
+      $font-weight: 600,
+      $font-size: $fs-base,
+      $color: $text-primary,
+      $line-height: 1.2
+    );
+    margin-bottom: $spacing-xs;
+  }
+
+   &__card-desc {
+    @include text-style(
+      $font-weight: 400,
+      $font-size: $fs-base,
+      $color: $text-secondary,
+      $line-height: 1.2
+    );
     margin: 0;
   }
 }
