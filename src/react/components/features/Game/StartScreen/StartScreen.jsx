@@ -1,7 +1,10 @@
+import GameInfo from "./GameInfo";
 
 function StartScreen() {
   return (
-    <section className="start-screen"></section>
+    <section className="start-screen">
+      <GameInfo />
+    </section>
   );
 }
 
