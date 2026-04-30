@@ -25,12 +25,12 @@
   &__title {
     @include text-style(
       $font-weight: 700,
-      $font-size: $fs-2xl,
+      $font-size: $fs-3xl,
       $color: $text-accent,
       $line-height: 1.2
     );
     text-align: center;
     letter-spacing: 0.5px;
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing-2xl;
   }
 }
