@@ -1,11 +1,11 @@
-import StartScreen from "./StartScreen/StartScreen";
+import GameScreen from "./GameScreen/GameScreen";
 
 function Game() {
   return (
     <section className="game">
       <h1 className="game__title">Memory Card</h1>
 
-      <StartScreen />
+      <GameScreen />
     </section>
   );
 }
