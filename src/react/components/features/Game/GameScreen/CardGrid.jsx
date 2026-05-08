@@ -6,6 +6,8 @@ function CardGrid() {
       <h2 className="visually-hidden">Game cards</h2>
 
       <MemoryCard />
+      <MemoryCard />
+      <MemoryCard />
     </section>
   );
 }
