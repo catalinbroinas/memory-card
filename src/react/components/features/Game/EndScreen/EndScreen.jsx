@@ -1,4 +1,5 @@
 import GameResult from "./GameResult";
+import GameActions from "./GameActions";
 
 function EndScreen() {
   return (
@@ -6,6 +7,7 @@ function EndScreen() {
       <h2 className="visually-hidden">Game results</h2>
 
       <GameResult />
+      <GameActions />
     </section>
   );
 }
