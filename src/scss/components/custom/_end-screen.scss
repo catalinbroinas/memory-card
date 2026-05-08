@@ -3,6 +3,16 @@
 @use '../../base/mixins' as *;
 
 // =================================
+//   END SCREEN
+// =================================
+
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+// =================================
 //   GAME RESULT
 // =================================
 
