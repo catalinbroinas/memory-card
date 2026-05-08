@@ -38,3 +38,13 @@
     font-weight: 600;
   }
 }
+
+// =================================
+//   GAME ACTIONS
+// =================================
+
+.game-actions {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-lg;
+}
