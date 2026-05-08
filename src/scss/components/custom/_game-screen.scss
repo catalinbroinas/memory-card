@@ -3,6 +3,7 @@
 @use '../../base/variables/typography' as *;
 @use '../../base/variables/spacing' as *;
 @use '../../base/variables/radius' as *;
+@use '../../base/variables/shadows' as *;
 @use '../../base/mixins' as *;
 
 // =================================
@@ -39,5 +40,20 @@
 
   &__value {
     font-weight: 600;
+  }
+}
+
+// =================================
+//   MEMORY CARD
+// =================================
+
+.memory-card {
+  width: 100%;
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
   }
 }
