@@ -7,18 +7,20 @@ function GameDifficulty() {
         Choose difficulty
       </h2>
 
-      <div className="game-difficulty__list" role="group">
+      <div className="game-difficulty__list">
         {difficulties.map((option) => (
-          <button 
+          <button
             key={option.id}
             className="game-difficulty__card"
+            type="button"
           >
-            <h3 className="game-difficulty__card-title">
+            <span className="game-difficulty__card-title">
               {option.label}
-            </h3>
-            <p className="game-difficulty__card-desc">
+            </span>
+
+            <span className="game-difficulty__card-desc">
               {option.rounds}{" "}rounds
-            </p>
+            </span>
           </button>
         ))}
       </div>
