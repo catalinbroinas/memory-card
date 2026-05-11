@@ -12,3 +12,8 @@ export const GAME_STATUS = {
   PLAYING: 'playing',
   END: 'end'
 };
+
+export const START_STEP = {
+  INFO: 'info',
+  SETTINGS: 'settings',
+};
