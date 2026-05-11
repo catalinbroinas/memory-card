@@ -78,6 +78,7 @@
   }
 
   &__card-title {
+    display: block;
     @include text-style(
       $font-weight: 600,
       $font-size: $fs-base,
@@ -88,6 +89,7 @@
   }
 
    &__card-desc {
+    display: block;
     @include text-style(
       $font-weight: 400,
       $font-size: $fs-base,
