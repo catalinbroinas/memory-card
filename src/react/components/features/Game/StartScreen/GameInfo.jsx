@@ -1,5 +1,5 @@
 
-function GameInfo() {
+function GameInfo({ onNext }) {
   return (
     <div className="game-info">
       <p className="game-info__desc">
@@ -7,7 +7,7 @@ function GameInfo() {
         Avoid clicking the same card twice and try to beat your high score.
       </p>
 
-      <button className="btn-primary btn-lg">Play Game</button>
+      <button className="btn-primary btn-lg" onClick={onNext}>Play Game</button>
     </div>
   );
 }
