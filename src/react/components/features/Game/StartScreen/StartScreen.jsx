@@ -7,7 +7,7 @@ import { START_STEP } from "../../../../constants/gameConstants";
 import GameInfo from "./GameInfo";
 import GameDifficulty from "./GameDifficulty";
 
-function StartScreen() {
+function StartScreen({ onStart }) {
   const [startStep, setStartStep] = useState(START_STEP.INFO);
 
   return (
@@ -19,7 +19,7 @@ function StartScreen() {
       )}
 
       {startStep === START_STEP.SETTINGS && (
-        <GameDifficulty />
+        <GameDifficulty onSelectDifficulty={onStart} />
       )}
     </section>
   );
