@@ -1,6 +1,6 @@
 import { difficulties } from "../../../../data/difficultyOptions";
 
-function GameDifficulty() {
+function GameDifficulty({ onSelectDifficulty }) {
   return (
     <div className="game-difficulty">
       <h2 className="game-difficulty__title">
@@ -13,6 +13,7 @@ function GameDifficulty() {
             key={option.id}
             className="game-difficulty__card"
             type="button"
+            onClick={() => onSelectDifficulty(option.id)}
           >
             <span className="game-difficulty__card-title">
               {option.label}
