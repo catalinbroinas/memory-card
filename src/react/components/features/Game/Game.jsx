@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // Date
 import { GAME_STATUS, DIFFICULTY } from "../../../constants/gameConstants";
+import { difficulties } from "../../../data/difficultyOptions";
 
 // Components
 import StartScreen from "./StartScreen/StartScreen";
@@ -10,6 +11,9 @@ import GameScreen from "./GameScreen/GameScreen";
 function Game() {
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
   const [gameDifficulty, setGameDifficulty] = useState(null);
+  const [score, setScore] = useState(0);
+  const [currentRound, setCurrentRound] = useState(1);
+  const totalRounds = difficulties.find((diff) => diff.id === gameDifficulty).rounds;
 
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
@@ -30,7 +34,11 @@ function Game() {
       )}
 
       {gameStatus === GAME_STATUS.PLAYING && (
-        <GameScreen />
+        <GameScreen
+          score={score}
+          currentRound={currentRound}
+          totalRounds={totalRounds}
+        />
       )}
     </section>
   );
