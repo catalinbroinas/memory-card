@@ -9,10 +9,15 @@ import StartScreen from "./StartScreen/StartScreen";
 import GameScreen from "./GameScreen/GameScreen";
 
 function Game() {
+  // States
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
   const [gameDifficulty, setGameDifficulty] = useState(null);
-  const [score, setScore] = useState(0);
-  const [currentRound, setCurrentRound] = useState(1);
+  const [gameStats, setGameStats] = useState({
+    score: 0,
+    currentRound: 1
+  });
+
+  // Data
   const totalRounds = gameDifficulty
     ? difficulties.find((diff) => diff.id === gameDifficulty).rounds
     : null;
@@ -37,8 +42,8 @@ function Game() {
 
       {gameStatus === GAME_STATUS.PLAYING && (
         <GameScreen
-          score={score}
-          currentRound={currentRound}
+          score={gameStats.score}
+          currentRound={gameStats.currentRound}
           totalRounds={totalRounds}
         />
       )}
