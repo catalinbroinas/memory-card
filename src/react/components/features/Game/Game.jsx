@@ -13,7 +13,9 @@ function Game() {
   const [gameDifficulty, setGameDifficulty] = useState(null);
   const [score, setScore] = useState(0);
   const [currentRound, setCurrentRound] = useState(1);
-  const totalRounds = difficulties.find((diff) => diff.id === gameDifficulty).rounds;
+  const totalRounds = gameDifficulty
+    ? difficulties.find((diff) => diff.id === gameDifficulty).rounds
+    : null;
 
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
