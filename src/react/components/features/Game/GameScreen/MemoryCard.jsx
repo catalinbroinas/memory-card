@@ -1,12 +1,15 @@
-import londonImg from "../../../../../assets/images/london.webp";
 
-function MemoryCard() {
+function MemoryCard({ name, imageUrl, onSelect}) {
   return (
-    <button className="card memory-card">
-      <img src={londonImg} alt="London" className="card-img" />
+    <button 
+      className="card memory-card"
+      type="button"
+      onClick={onSelect}
+    >
+      <img src={imageUrl} alt={name} className="card-img" />
 
       <div className="card-header">
-        <h3 className="card-title">London</h3>
+        <h3 className="card-title">{name}</h3>
       </div>
     </button>
   );
