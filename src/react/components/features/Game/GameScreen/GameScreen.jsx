@@ -1,6 +1,12 @@
 import GameStatus from "./GameStatus";
+import CardGrid from "./CardGrid";
 
-function GameScreen({ score, currentRound, totalRounds }) {
+function GameScreen({
+  score,
+  currentRound,
+  totalRounds,
+  cards
+}) {
   return (
     <section className="game-screen">
       <h2 className="visually-hidden">Play game</h2>
@@ -10,6 +16,8 @@ function GameScreen({ score, currentRound, totalRounds }) {
         currentRound={currentRound}
         totalRounds={totalRounds}
       />
+
+      <CardGrid cards={cards} />
     </section>
   );
 }

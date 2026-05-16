@@ -3,6 +3,7 @@ import { useState } from "react";
 // Date
 import { GAME_STATUS, DIFFICULTY } from "../../../constants/gameConstants";
 import { difficulties } from "../../../data/difficultyOptions";
+import { cards } from "../../../data/cards";
 
 // Components
 import StartScreen from "./StartScreen/StartScreen";
@@ -16,11 +17,24 @@ function Game() {
     score: 0,
     currentRound: 1
   });
+  const [cardDeck, setCardDeck] = useState([]);
 
   // Data
   const totalRounds = gameDifficulty
     ? difficulties.find((diff) => diff.id === gameDifficulty).rounds
     : null;
+
+  const cardsPerRound = {
+    [DIFFICULTY.EASY]: 3,
+    [DIFFICULTY.MEDIUM]: 3,
+    [DIFFICULTY.HARD]: 6
+  };
+  const cardDeckLength = {
+    [DIFFICULTY.EASY]: 4,
+    [DIFFICULTY.MEDIUM]: 10,
+    [DIFFICULTY.HARD]: 14
+  };
+  const visibleCards = cardDeck.slice(0, cardsPerRound[gameDifficulty]);
 
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
@@ -29,6 +43,9 @@ function Game() {
     if (!isValidDifficulty) return;
 
     setGameDifficulty(difficultySelected);
+
+    setCardDeck(cards.slice(0, cardDeckLength[gameDifficulty]));
+
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
@@ -45,6 +62,7 @@ function Game() {
           score={gameStats.score}
           currentRound={gameStats.currentRound}
           totalRounds={totalRounds}
+          cards={visibleCards}
         />
       )}
     </section>
