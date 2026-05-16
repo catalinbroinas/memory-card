@@ -30,11 +30,13 @@ function Game() {
     [DIFFICULTY.HARD]: 6
   };
   const cardDeckLength = {
-    [DIFFICULTY.EASY]: 4,
+    [DIFFICULTY.EASY]: 6,
     [DIFFICULTY.MEDIUM]: 10,
     [DIFFICULTY.HARD]: 14
   };
-  const visibleCards = cardDeck.slice(0, cardsPerRound[gameDifficulty]);
+  const visibleCards = gameDifficulty
+    ? cardDeck.slice(0, cardsPerRound[gameDifficulty])
+    : [];
 
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
@@ -44,7 +46,7 @@ function Game() {
 
     setGameDifficulty(difficultySelected);
 
-    setCardDeck(cards.slice(0, cardDeckLength[gameDifficulty]));
+    setCardDeck(cards.slice(0, cardDeckLength[difficultySelected]));
 
     setGameStatus(GAME_STATUS.PLAYING);
   };
