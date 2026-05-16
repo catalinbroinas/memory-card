@@ -1,19 +1,20 @@
 import { DIFFICULTY } from "../constants/gameConstants";
+import { difficultyConfig } from "../config/difficultyConfig";
 
 export const difficulties = [
   {
     id: DIFFICULTY.EASY,
     label: 'Easy',
-    rounds: 4,
+    rounds: difficultyConfig.easy.rounds,
   },
   {
     id: DIFFICULTY.MEDIUM,
     label: 'Medium',
-    rounds: 8,
+    rounds: difficultyConfig.medium.rounds,
   },
   {
     id: DIFFICULTY.HARD,
     label: 'Hard',
-    rounds: 12,
+    rounds: difficultyConfig.hard.rounds,
   },
 ];
