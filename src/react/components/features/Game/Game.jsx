@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Date
 import { GAME_STATUS, DIFFICULTY } from "../../../constants/gameConstants";
-import { difficulties } from "../../../data/difficultyOptions";
+import { difficultyConfig } from "../../../config/difficultyConfig";
 import { cards } from "../../../data/cards";
 
 // Components
@@ -13,30 +13,19 @@ function Game() {
   // States
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
   const [gameDifficulty, setGameDifficulty] = useState(null);
-  const [gameStats, setGameStats] = useState({
-    score: 0,
-    currentRound: 1
-  });
+  const [score, setScore] = useState(0);
   const [cardDeck, setCardDeck] = useState([]);
 
   // Data
-  const totalRounds = gameDifficulty
-    ? difficulties.find((diff) => diff.id === gameDifficulty).rounds
+  const currentRound = score + 1;
+  const currentDifficulty = gameDifficulty
+    ? difficultyConfig[gameDifficulty]
     : null;
-
-  const cardsPerRound = {
-    [DIFFICULTY.EASY]: 3,
-    [DIFFICULTY.MEDIUM]: 3,
-    [DIFFICULTY.HARD]: 6
-  };
-  const cardDeckLength = {
-    [DIFFICULTY.EASY]: 6,
-    [DIFFICULTY.MEDIUM]: 10,
-    [DIFFICULTY.HARD]: 14
-  };
-  const visibleCards = gameDifficulty
-    ? cardDeck.slice(0, cardsPerRound[gameDifficulty])
-    : [];
+  const totalRounds = currentDifficulty?.rounds ?? null;
+  const visibleCards = cardDeck.slice(
+    0,
+    currentDifficulty?.cardsPerRound ?? 0
+  );
 
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
@@ -46,7 +35,8 @@ function Game() {
 
     setGameDifficulty(difficultySelected);
 
-    setCardDeck(cards.slice(0, cardDeckLength[difficultySelected]));
+    const { deckSize } = difficultyConfig[difficultySelected];
+    setCardDeck(cards.slice(0, deckSize));
 
     setGameStatus(GAME_STATUS.PLAYING);
   };
@@ -61,8 +51,8 @@ function Game() {
 
       {gameStatus === GAME_STATUS.PLAYING && (
         <GameScreen
-          score={gameStats.score}
-          currentRound={gameStats.currentRound}
+          score={score}
+          currentRound={currentRound}
           totalRounds={totalRounds}
           cards={visibleCards}
         />
