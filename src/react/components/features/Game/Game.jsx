@@ -15,6 +15,7 @@ function Game() {
   const [gameDifficulty, setGameDifficulty] = useState(null);
   const [score, setScore] = useState(0);
   const [cardDeck, setCardDeck] = useState([]);
+  const [selectedCardIds, setSelectedCardIds] = useState([]);
 
   // Data
   const currentRound = score + 1;
@@ -41,6 +42,29 @@ function Game() {
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
+  const handleSelectCard = (cardID) => {
+    const isValidCard = cardDeck.find((card) => card.id === cardID);
+    if (!isValidCard) return;
+
+    const isSelectedCard = selectedCardIds.includes(cardID);
+    if (isSelectedCard) {
+      setGameStatus(GAME_STATUS.END);
+      return;
+    }
+
+    setSelectedCardIds((prev) => [
+      ...prev,
+      cardID
+    ]);
+
+    const nextScore = score + 1;
+    setScore(nextScore);
+    if (nextScore >= totalRounds) {
+      setGameStatus(GAME_STATUS.END);
+      return;
+    }
+  };
+
   return (
     <section className="game">
       <h1 className="game__title">Memory Card</h1>
@@ -55,6 +79,7 @@ function Game() {
           currentRound={currentRound}
           totalRounds={totalRounds}
           cards={visibleCards}
+          onSelectCard={handleSelectCard}
         />
       )}
     </section>

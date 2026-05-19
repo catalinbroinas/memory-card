@@ -5,7 +5,8 @@ function GameScreen({
   score,
   currentRound,
   totalRounds,
-  cards
+  cards,
+  onSelectCard
 }) {
   return (
     <section className="game-screen">
@@ -17,7 +18,10 @@ function GameScreen({
         totalRounds={totalRounds}
       />
 
-      <CardGrid cards={cards} />
+      <CardGrid
+        cards={cards}
+        onSelect={onSelectCard}
+      />
     </section>
   );
 }
