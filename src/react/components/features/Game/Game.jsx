@@ -9,6 +9,9 @@ import { cards } from "../../../data/cards";
 import StartScreen from "./StartScreen/StartScreen";
 import GameScreen from "./GameScreen/GameScreen";
 
+// Helpers
+import { shuffleArray } from "../../../../js/utils/shuffleArray";
+
 function Game() {
   // States
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
@@ -37,7 +40,7 @@ function Game() {
     setGameDifficulty(difficultySelected);
 
     const { deckSize } = difficultyConfig[difficultySelected];
-    setCardDeck(cards.slice(0, deckSize));
+    setCardDeck(shuffleArray(cards.slice(0, deckSize)));
 
     setGameStatus(GAME_STATUS.PLAYING);
   };
@@ -63,6 +66,8 @@ function Game() {
       setGameStatus(GAME_STATUS.END);
       return;
     }
+
+    setCardDeck((prev) => shuffleArray(prev))
   };
 
   return (
