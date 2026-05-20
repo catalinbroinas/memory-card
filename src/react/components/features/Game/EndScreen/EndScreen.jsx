@@ -21,6 +21,7 @@ function EndScreen({
       <GameResult
         difficulty={difficultyLabel}
         score={score}
+        bestScore={bestScore}
       />
       <GameActions />
     </section>

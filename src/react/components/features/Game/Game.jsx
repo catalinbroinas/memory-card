@@ -18,6 +18,7 @@ function Game() {
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
   const [gameDifficulty, setGameDifficulty] = useState(null);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [cardDeck, setCardDeck] = useState([]);
   const [selectedCardIds, setSelectedCardIds] = useState([]);
 
@@ -63,6 +64,11 @@ function Game() {
 
     const nextScore = score + 1;
     setScore(nextScore);
+
+    if (nextScore > bestScore) {
+      setBestScore(nextScore);
+    }
+
     if (nextScore >= totalRounds) {
       setGameStatus(GAME_STATUS.END);
       return;
@@ -93,6 +99,7 @@ function Game() {
         <EndScreen
           difficultyId={gameDifficulty}
           score={score}
+          bestScore={bestScore}
         />
       )}
     </section>
