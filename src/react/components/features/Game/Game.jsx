@@ -91,7 +91,7 @@ function Game() {
 
       {gameStatus === GAME_STATUS.END && (
         <EndScreen
-          difficulty={gameDifficulty}
+          difficultyId={gameDifficulty}
           score={score}
         />
       )}
