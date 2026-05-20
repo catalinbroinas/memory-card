@@ -8,6 +8,7 @@ import { cards } from "../../../data/cards";
 // Components
 import StartScreen from "./StartScreen/StartScreen";
 import GameScreen from "./GameScreen/GameScreen";
+import EndScreen from "./EndScreen/EndScreen";
 
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
@@ -85,6 +86,13 @@ function Game() {
           totalRounds={totalRounds}
           cards={visibleCards}
           onSelectCard={handleSelectCard}
+        />
+      )}
+
+      {gameStatus === GAME_STATUS.END && (
+        <EndScreen
+          difficulty={gameDifficulty}
+          score={score}
         />
       )}
     </section>
