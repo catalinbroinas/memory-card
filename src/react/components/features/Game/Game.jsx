@@ -80,7 +80,6 @@ function Game() {
   const handleGameReset = () => {
     setGameDifficulty(null);
     setScore(0);
-    setBestScore(0);
     setCardDeck([]);
     setSelectedCardIds([]);
     setGameStatus(GAME_STATUS.START);
