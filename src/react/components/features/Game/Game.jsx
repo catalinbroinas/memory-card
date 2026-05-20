@@ -77,6 +77,22 @@ function Game() {
     setCardDeck((prev) => shuffleArray(prev))
   };
 
+  const handleGameReset = () => {
+    setGameDifficulty(null);
+    setScore(0);
+    setBestScore(0);
+    setCardDeck([]);
+    setSelectedCardIds([]);
+    setGameStatus(GAME_STATUS.START);
+  };
+
+  const handleGameReplay = () => {
+    setScore(0);
+    setSelectedCardIds([]);
+    setCardDeck((prev) => shuffleArray(prev));
+    setGameStatus(GAME_STATUS.PLAYING);
+  };
+
   return (
     <section className="game">
       <h1 className="game__title">Memory Card</h1>
@@ -100,6 +116,8 @@ function Game() {
           difficultyId={gameDifficulty}
           score={score}
           bestScore={bestScore}
+          onReset={handleGameReset}
+          onReplay={handleGameReplay}
         />
       )}
     </section>

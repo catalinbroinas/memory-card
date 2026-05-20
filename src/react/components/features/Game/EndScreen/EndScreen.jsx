@@ -8,7 +8,9 @@ import GameActions from "./GameActions";
 function EndScreen({
   difficultyId,
   score,
-  bestScore
+  bestScore,
+  onReset,
+  onReplay
 }) {
   const difficultyLabel = difficulties.find((difficulty) => (
     difficulty.id === difficultyId
@@ -23,7 +25,11 @@ function EndScreen({
         score={score}
         bestScore={bestScore}
       />
-      <GameActions />
+
+      <GameActions
+        onReset={onReset}
+        onReplay={onReplay}
+      />
     </section>
   );
 }
