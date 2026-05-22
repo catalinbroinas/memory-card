@@ -14,25 +14,32 @@ import EndScreen from "./EndScreen/EndScreen";
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
 
 function Game() {
-  // States
+  // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
   const [gameDifficulty, setGameDifficulty] = useState(null);
+
+  // Score system state
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+
+  // Game data state
   const [cardDeck, setCardDeck] = useState([]);
   const [selectedCardIds, setSelectedCardIds] = useState([]);
 
-  // Data
+  // Game flow
   const currentRound = score + 1;
-  const currentDifficulty = gameDifficulty
+  const currentDifficultyConfig = gameDifficulty
     ? difficultyConfig[gameDifficulty]
     : null;
-  const totalRounds = currentDifficulty?.rounds ?? null;
+  const totalRounds = currentDifficultyConfig?.rounds ?? null;
+
+  // Game data
   const visibleCards = cardDeck.slice(
     0,
-    currentDifficulty?.cardsPerRound ?? 0
+    currentDifficultyConfig?.cardsPerRound ?? 0
   );
 
+  // Start screen handler
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
       Object.values(DIFFICULTY).includes(difficultySelected);
@@ -47,6 +54,7 @@ function Game() {
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
+  // Game flow handler
   const handleSelectCard = (cardID) => {
     const isValidCard = cardDeck.find((card) => card.id === cardID);
     if (!isValidCard) return;
@@ -77,6 +85,7 @@ function Game() {
     setCardDeck((prev) => shuffleArray(prev))
   };
 
+  // Reset game
   const handleGameReset = () => {
     setGameDifficulty(null);
     setScore(0);
@@ -85,6 +94,7 @@ function Game() {
     setGameStatus(GAME_STATUS.START);
   };
 
+  // Replay game
   const handleGameReplay = () => {
     setScore(0);
     setSelectedCardIds([]);
