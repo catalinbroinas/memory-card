@@ -13,6 +13,7 @@ import EndScreen from "./EndScreen/EndScreen";
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
 import { isValidCard, isDuplicate, isWin } from "./game/rules";
+import { getVisibleCards } from "./game/selectors";
 
 function Game() {
   // Game flow state
@@ -35,10 +36,11 @@ function Game() {
   const totalRounds = currentDifficultyConfig?.rounds ?? null;
 
   // Game data
-  const visibleCards = cardDeck.slice(
-    0,
-    currentDifficultyConfig?.cardsPerRound ?? 0
-  );
+  const visibleCards = getVisibleCards({
+    deck: cardDeck,
+    selectedIds: selectedCardIds,
+    cardsPerRound: currentDifficultyConfig?.cardsPerRound ?? 0
+  });
 
   // Update Game progress
   const updateProgress = (cardId) => {
