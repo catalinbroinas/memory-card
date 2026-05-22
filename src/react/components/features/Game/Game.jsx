@@ -72,22 +72,22 @@ function Game() {
   };
 
   // Game flow handler
-  const handleSelectCard = (cardID) => {
-    if (!isValidCard(cardDeck, cardID)) return;
+  const handleSelectCard = (cardId) => {
+    if (!isValidCard(cardDeck, cardId)) return;
 
-    if (isDuplicate(selectedCardIds, cardID)) {
+    if (isDuplicate(selectedCardIds, cardId)) {
       setGameStatus(GAME_STATUS.END);
       return;
     }
 
-    const progress = updateProgress(cardID);
+    const progress = updateProgress(cardId);
 
     if (isWin(progress, totalRounds)) {
       setGameStatus(GAME_STATUS.END);
       return;
     }
 
-    setCardDeck((prev) => shuffleArray(prev))
+    setCardDeck((prev) => shuffleArray(prev));
   };
 
   // Reset game
