@@ -49,7 +49,7 @@ function Game() {
     setGameDifficulty(difficultySelected);
 
     const { deckSize } = difficultyConfig[difficultySelected];
-    setCardDeck(shuffleArray(cards.slice(0, deckSize)));
+    setCardDeck(shuffleArray(cards).slice(0, deckSize));
 
     setGameStatus(GAME_STATUS.PLAYING);
   };
