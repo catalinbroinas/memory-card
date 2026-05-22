@@ -39,6 +39,20 @@ function Game() {
     currentDifficultyConfig?.cardsPerRound ?? 0
   );
 
+  // Update Game progress
+  const updateProgress = (cardId) => {
+    setSelectedCardIds((prev) => [...prev, cardId]);
+
+    const nextScore = score + 1;
+    setScore(nextScore);
+
+    setBestScore((bestPrev) =>
+      nextScore > bestPrev ? nextScore : bestPrev
+    );
+
+    return nextScore;
+  };
+
   // Start screen handler
   const handleGameStart = (difficultySelected) => {
     const isValidDifficulty = 
@@ -65,18 +79,7 @@ function Game() {
       return;
     }
 
-    setSelectedCardIds((prev) => [
-      ...prev,
-      cardID
-    ]);
-
-    const nextScore = score + 1;
-    setScore(nextScore);
-
-    if (nextScore > bestScore) {
-      setBestScore(nextScore);
-    }
-
+    const nextScore = updateProgress(cardID);
     if (nextScore >= totalRounds) {
       setGameStatus(GAME_STATUS.END);
       return;
