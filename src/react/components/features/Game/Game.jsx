@@ -12,6 +12,7 @@ import EndScreen from "./EndScreen/EndScreen";
 
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
+import { isValidCard, isDuplicate, isWin } from "./game/rules";
 
 function Game() {
   // Game flow state
@@ -70,17 +71,16 @@ function Game() {
 
   // Game flow handler
   const handleSelectCard = (cardID) => {
-    const isValidCard = cardDeck.find((card) => card.id === cardID);
-    if (!isValidCard) return;
+    if (!isValidCard(cardDeck, cardID)) return;
 
-    const isSelectedCard = selectedCardIds.includes(cardID);
-    if (isSelectedCard) {
+    if (isDuplicate(selectedCardIds, cardID)) {
       setGameStatus(GAME_STATUS.END);
       return;
     }
 
-    const nextScore = updateProgress(cardID);
-    if (nextScore >= totalRounds) {
+    const progress = updateProgress(cardID);
+
+    if (isWin(progress, totalRounds)) {
       setGameStatus(GAME_STATUS.END);
       return;
     }
