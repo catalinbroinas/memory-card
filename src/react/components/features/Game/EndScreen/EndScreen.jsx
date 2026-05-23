@@ -9,6 +9,7 @@ function EndScreen({
   difficultyId,
   score,
   bestScore,
+  isVictory,
   onReset,
   onReplay
 }) {
@@ -24,6 +25,7 @@ function EndScreen({
         difficulty={difficultyLabel}
         score={score}
         bestScore={bestScore}
+        isVictory={isVictory}
       />
 
       <GameActions

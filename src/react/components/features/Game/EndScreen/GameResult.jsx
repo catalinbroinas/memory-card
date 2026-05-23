@@ -1,8 +1,21 @@
 
-function GameResult({ difficulty, score, bestScore }) {
+function GameResult({ difficulty, score, bestScore, isVictory }) {
+  const result = {
+    victory: {
+      title: 'You won!',
+      style: 'victory'
+    },
+    defeat: {
+      title: 'Game over!',
+      style: 'defeat'
+    }
+  }[isVictory ? 'victory' : 'defeat'];
+
   return (
     <div className="game-result">
-      <h3 className="game-result__title">Win / Lose</h3>
+      <h3 className={`game-result__title game-result__title--${result.style}`}>
+        {result.title}
+      </h3>
 
       <ul className="game-result__list">
         <li className="game-result__item">

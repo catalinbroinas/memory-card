@@ -34,6 +34,7 @@ function Game() {
     ? difficultyConfig[gameDifficulty]
     : null;
   const totalRounds = currentDifficultyConfig?.rounds ?? null;
+  const isVictory = gameStatus === GAME_STATUS.END && score >= totalRounds;
 
   // Game data
   const visibleCards = getVisibleCards({
@@ -130,6 +131,7 @@ function Game() {
           difficultyId={gameDifficulty}
           score={score}
           bestScore={bestScore}
+          isVictory={isVictory}
           onReset={handleGameReset}
           onReplay={handleGameReplay}
         />
