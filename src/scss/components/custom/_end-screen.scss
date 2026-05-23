@@ -19,12 +19,36 @@
 .game-result {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: $spacing-sm;
+  gap: $spacing-lg;
 
   background-color: $accent;
   padding: 1.5rem 2rem;
   border-radius: map.get($rounded-map, md);
+
+  &__title {
+    @include text-style(
+      $font-weight: 600,
+      $font-size: $fs-2xl,
+      $line-height: 1.4
+    );
+    text-align: center;
+    margin-bottom: 0;
+
+    &--victory {
+      color: $success-text;
+    }
+
+    &--defeat {
+      color: $danger-text;
+    }
+  }
+
+  &__list {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+  }
 
   &__item {
     width: 200px;
