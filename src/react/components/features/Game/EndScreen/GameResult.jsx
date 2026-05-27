@@ -1,5 +1,11 @@
 
-function GameResult({ difficulty, score, bestScore, isVictory }) {
+function GameResult({
+  difficulty,
+  score,
+  bestScore,
+  isVictory,
+  isNewRecord
+}) {
   const result = {
     victory: {
       title: 'You won!',
@@ -30,7 +36,14 @@ function GameResult({ difficulty, score, bestScore, isVictory }) {
 
         <li className="game-result__item">
           <span className="game-result__label">Best score:</span>
-          <strong className="game-result__value">{bestScore}</strong>
+
+          <div className="game-result__value-wrapper">
+            <strong className="game-result__value">{bestScore}</strong>
+
+            {isNewRecord && (
+              <span className="game-result__badge">New record!</span>
+            )}
+          </div>
         </li>
       </ul>
     </div>

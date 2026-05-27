@@ -10,6 +10,7 @@ function EndScreen({
   score,
   bestScore,
   isVictory,
+  isNewRecord,
   onReset,
   onReplay
 }) {
@@ -26,6 +27,7 @@ function EndScreen({
         score={score}
         bestScore={bestScore}
         isVictory={isVictory}
+        isNewRecord={isNewRecord}
       />
 
       <GameActions
