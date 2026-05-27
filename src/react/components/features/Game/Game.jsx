@@ -12,6 +12,11 @@ import EndScreen from "./EndScreen/EndScreen";
 
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
+import {
+  isLocalStorageAvailable,
+  getStorageItem,
+  setStorageItem
+} from "../../../../js/utils/storage";
 import { isValidCard, isDuplicate, isWin } from "./game/rules";
 import { getVisibleCards } from "./game/selectors";
 
@@ -22,7 +27,13 @@ function Game() {
 
   // Score system state
   const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  const [bestScore, setBestScore] = useState(() => {
+    if (!isLocalStorageAvailable()) return 0;
+    
+    const savedScore = getStorageItem("bestScore");
+
+    return Number(savedScore) || 0;
+  });
 
   // Game data state
   const [cardDeck, setCardDeck] = useState([]);
@@ -50,8 +61,15 @@ function Game() {
     const nextScore = score + 1;
     setScore(nextScore);
 
-    setBestScore((bestPrev) =>
-      nextScore > bestPrev ? nextScore : bestPrev
+    setBestScore((bestPrev) => {
+        const nextBest = nextScore > bestPrev ? nextScore : bestPrev;
+
+        if (isLocalStorageAvailable() && nextBest > bestPrev) {
+          setStorageItem("bestScore", nextBest);
+        }
+
+        return nextBest;
+      }
     );
 
     return nextScore;
