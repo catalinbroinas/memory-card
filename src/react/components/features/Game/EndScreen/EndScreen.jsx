@@ -12,7 +12,8 @@ function EndScreen({
   isVictory,
   isNewRecord,
   onReset,
-  onReplay
+  onReplay,
+  onResetProgress
 }) {
   const difficultyLabel = difficulties.find((difficulty) => (
     difficulty.id === difficultyId
@@ -33,6 +34,7 @@ function EndScreen({
       <GameActions
         onReset={onReset}
         onReplay={onReplay}
+        onResetProgress={onResetProgress}
       />
     </section>
   );

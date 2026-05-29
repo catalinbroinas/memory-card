@@ -129,6 +129,17 @@ function Game() {
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
+  const resetBestScore = () => {
+    if (!window.confirm("Reset best score?")) return;
+
+    setBestScore(0);
+    setIsNewRecord(false);
+
+    if (isLocalStorageAvailable()) {
+      setStorageItem("bestScore", 0);
+    }
+  };
+
   return (
     <section className="game">
       <h1 className="game__title">Memory Card</h1>
@@ -156,6 +167,7 @@ function Game() {
           isNewRecord={isNewRecord}
           onReset={handleGameReset}
           onReplay={handleGameReplay}
+          onResetProgress={resetBestScore}
         />
       )}
     </section>
