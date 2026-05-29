@@ -34,6 +34,7 @@ function Game() {
 
     return Number(savedScore) || 0;
   });
+  const [isNewRecord, setIsNewRecord] = useState(false);
 
   // Game data state
   const [cardDeck, setCardDeck] = useState([]);
@@ -64,8 +65,12 @@ function Game() {
     setBestScore((bestPrev) => {
         const nextBest = nextScore > bestPrev ? nextScore : bestPrev;
 
-        if (isLocalStorageAvailable() && nextBest > bestPrev) {
-          setStorageItem("bestScore", nextBest);
+        if (nextBest > bestPrev) {
+          setIsNewRecord(true);
+
+          if (isLocalStorageAvailable()) {
+            setStorageItem("bestScore", nextBest);
+          }
         }
 
         return nextBest;
@@ -113,6 +118,7 @@ function Game() {
   const handleGameReset = () => {
     setGameDifficulty(null);
     setScore(0);
+    setIsNewRecord(false);
     setCardDeck([]);
     setSelectedCardIds([]);
     setGameStatus(GAME_STATUS.START);
@@ -121,6 +127,7 @@ function Game() {
   // Replay game
   const handleGameReplay = () => {
     setScore(0);
+    setIsNewRecord(false);
     setSelectedCardIds([]);
     setCardDeck((prev) => shuffleArray(prev));
     setGameStatus(GAME_STATUS.PLAYING);
@@ -150,6 +157,7 @@ function Game() {
           score={score}
           bestScore={bestScore}
           isVictory={isVictory}
+          isNewRecord={isNewRecord}
           onReset={handleGameReset}
           onReplay={handleGameReplay}
         />
