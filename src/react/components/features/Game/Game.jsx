@@ -60,22 +60,18 @@ function Game() {
     setSelectedCardIds((prev) => [...prev, cardId]);
 
     const nextScore = score + 1;
+    const isNewBest = nextScore > bestScore;
+
     setScore(nextScore);
 
-    setBestScore((bestPrev) => {
-        const nextBest = nextScore > bestPrev ? nextScore : bestPrev;
+    if (isNewBest) {
+      setBestScore(nextScore);
+      setIsNewRecord(true);
 
-        if (nextBest > bestPrev) {
-          setIsNewRecord(true);
-
-          if (isLocalStorageAvailable()) {
-            setStorageItem("bestScore", nextBest);
-          }
-        }
-
-        return nextBest;
+      if (isLocalStorageAvailable()) {
+        setStorageItem("bestScore", nextScore);
       }
-    );
+    }
 
     return nextScore;
   };
