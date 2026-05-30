@@ -24,6 +24,7 @@ import {
 } from "../../../../js/utils/storage";
 import { isValidCard, isDuplicate, isWin } from "./game/rules";
 import { getVisibleCards } from "./game/selectors";
+import { loadBestScore } from "./game/bestScore";
 
 function Game() {
   // Game flow state
@@ -32,26 +33,7 @@ function Game() {
 
   // Score system state
   const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(() => {
-    if (!isLocalStorageAvailable()) {
-      return { ...DEFAULT_BEST_SCORE };
-    }
-    
-    const savedScore = getStorageItem(KEY_BEST_SCORE);
-
-    if (!savedScore) {
-      return { ...DEFAULT_BEST_SCORE };
-    }
-
-    try {
-      return {
-        ...DEFAULT_BEST_SCORE,
-        ...JSON.parse(savedScore)
-      };
-    } catch {
-      return { ...DEFAULT_BEST_SCORE };
-    }
-  });
+  const [bestScore, setBestScore] = useState(() => loadBestScore());
   const [isNewRecord, setIsNewRecord] = useState(false);
 
   // Game data state
