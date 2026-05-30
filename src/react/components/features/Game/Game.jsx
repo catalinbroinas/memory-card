@@ -60,20 +60,20 @@ function Game() {
     setSelectedCardIds((prev) => [...prev, cardId]);
 
     const nextScore = score + 1;
-    const isNewBest = nextScore > bestScore;
-
     setScore(nextScore);
 
-    if (isNewBest) {
-      setBestScore(nextScore);
-      setIsNewRecord(true);
-
-      if (isLocalStorageAvailable()) {
-        setStorageItem("bestScore", nextScore);
-      }
-    }
-
     return nextScore;
+  };
+
+  const updateBestScore = (finalScore) => {
+    if (finalScore <= bestScore) return;
+
+    setBestScore(finalScore);
+    setIsNewRecord(true);
+
+    if (isLocalStorageAvailable()) {
+      setStorageItem("bestScore", finalScore);
+    }
   };
 
   // Start screen handler
@@ -96,13 +96,17 @@ function Game() {
     if (!isValidCard(cardDeck, cardId)) return;
 
     if (isDuplicate(selectedCardIds, cardId)) {
+      updateBestScore(score);
+
       setGameStatus(GAME_STATUS.END);
       return;
     }
 
-    const progress = updateProgress(cardId);
+    const nextScore = updateProgress(cardId);
 
-    if (isWin(progress, totalRounds)) {
+    if (isWin(nextScore, totalRounds)) {
+      updateBestScore(nextScore);
+
       setGameStatus(GAME_STATUS.END);
       return;
     }
