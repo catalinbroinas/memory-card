@@ -31,3 +31,16 @@ export function loadBestScore() {
     return { ...DEFAULT_BEST_SCORE };
   }
 }
+
+export function saveBestScore(key, value) {
+  if (!isLocalStorageAvailable()) return;
+
+  const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
+
+  const newScore = {
+    ...oldBestScore,
+    [key]: value
+  };
+
+  setStorageItem(KEY_BEST_SCORE, JSON.stringify(newScore));
+}

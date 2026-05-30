@@ -17,14 +17,12 @@ import EndScreen from "./EndScreen/EndScreen";
 
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
-import {
-  isLocalStorageAvailable,
-  getStorageItem,
-  setStorageItem
-} from "../../../../js/utils/storage";
 import { isValidCard, isDuplicate, isWin } from "./game/rules";
 import { getVisibleCards } from "./game/selectors";
-import { loadBestScore } from "./game/bestScore";
+import {
+  loadBestScore,
+  saveBestScore
+} from "./game/bestScore";
 
 function Game() {
   // Game flow state
@@ -77,16 +75,7 @@ function Game() {
       [gameDifficulty]: finalScore
     }));
 
-    if (isLocalStorageAvailable()) {
-      const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
-
-      const newScore = {
-        ...oldBestScore,
-        [gameDifficulty]: finalScore
-      };
-
-      setStorageItem(KEY_BEST_SCORE, JSON.stringify(newScore));
-    }
+    saveBestScore(gameDifficulty, finalScore);
   };
 
   // Start screen handler
@@ -155,16 +144,7 @@ function Game() {
     }));
     setIsNewRecord(false);
 
-    if (isLocalStorageAvailable()) {
-      const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
-
-      const newBestScore = {
-        ...oldBestScore,
-        [gameDifficulty]: 0
-      };
-
-      setStorageItem(KEY_BEST_SCORE, JSON.stringify(newBestScore));
-    }
+    saveBestScore(gameDifficulty, 0);
   };
 
   return (
