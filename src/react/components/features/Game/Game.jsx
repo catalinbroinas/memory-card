@@ -68,8 +68,11 @@ function Game() {
   const updateBestScore = (finalScore) => {
     if (finalScore <= bestScore) return;
 
+    if (bestScore > 0) {
+      setIsNewRecord(true);
+    }
+
     setBestScore(finalScore);
-    setIsNewRecord(true);
 
     if (isLocalStorageAvailable()) {
       setStorageItem("bestScore", finalScore);
