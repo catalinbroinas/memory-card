@@ -6,6 +6,14 @@ export const DIFFICULTY = {
   HARD: 'hard'
 };
 
+export const DEFAULT_BEST_SCORE = {
+  easy: 0,
+  medium: 0,
+  hard: 0
+};
+
+export const KEY_BEST_SCORE = "bestScore";
+
 // States
 export const GAME_STATUS = {
   START: 'start',

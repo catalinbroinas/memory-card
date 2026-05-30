@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 // Date
-import { GAME_STATUS, DIFFICULTY } from "../../../constants/gameConstants";
+import {
+  GAME_STATUS,
+  DIFFICULTY,
+  DEFAULT_BEST_SCORE,
+  KEY_BEST_SCORE
+} from "../../../constants/gameConstants";
 import { difficultyConfig } from "../../../config/difficultyConfig";
 import { cards } from "../../../data/cards";
 
@@ -28,11 +33,24 @@ function Game() {
   // Score system state
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(() => {
-    if (!isLocalStorageAvailable()) return 0;
+    if (!isLocalStorageAvailable()) {
+      return { ...DEFAULT_BEST_SCORE };
+    }
     
-    const savedScore = getStorageItem("bestScore");
+    const savedScore = getStorageItem(KEY_BEST_SCORE);
 
-    return Number(savedScore) || 0;
+    if (!savedScore) {
+      return { ...DEFAULT_BEST_SCORE };
+    }
+
+    try {
+      return {
+        ...DEFAULT_BEST_SCORE,
+        ...JSON.parse(savedScore)
+      };
+    } catch {
+      return { ...DEFAULT_BEST_SCORE };
+    }
   });
   const [isNewRecord, setIsNewRecord] = useState(false);
 
@@ -66,16 +84,26 @@ function Game() {
   };
 
   const updateBestScore = (finalScore) => {
-    if (finalScore <= bestScore) return;
+    if (finalScore <= bestScore[gameDifficulty]) return;
 
-    if (bestScore > 0) {
+    if (bestScore[gameDifficulty] > 0) {
       setIsNewRecord(true);
     }
 
-    setBestScore(finalScore);
+    setBestScore((prev) => ({
+      ...prev,
+      [gameDifficulty]: finalScore
+    }));
 
     if (isLocalStorageAvailable()) {
-      setStorageItem("bestScore", finalScore);
+      const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
+
+      const newScore = {
+        ...oldBestScore,
+        [gameDifficulty]: finalScore
+      };
+
+      setStorageItem(KEY_BEST_SCORE, JSON.stringify(newScore));
     }
   };
 
@@ -139,11 +167,21 @@ function Game() {
   const resetBestScore = () => {
     if (!window.confirm("Reset best score?")) return;
 
-    setBestScore(0);
+    setBestScore((prev) => ({
+      ...prev,
+      [gameDifficulty]: 0
+    }));
     setIsNewRecord(false);
 
     if (isLocalStorageAvailable()) {
-      setStorageItem("bestScore", 0);
+      const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
+
+      const newBestScore = {
+        ...oldBestScore,
+        [gameDifficulty]: 0
+      };
+
+      setStorageItem(KEY_BEST_SCORE, JSON.stringify(newBestScore));
     }
   };
 
@@ -169,7 +207,7 @@ function Game() {
         <EndScreen
           difficultyId={gameDifficulty}
           score={score}
-          bestScore={bestScore}
+          bestScore={bestScore[gameDifficulty]}
           isVictory={isVictory}
           isNewRecord={isNewRecord}
           onReset={handleGameReset}
