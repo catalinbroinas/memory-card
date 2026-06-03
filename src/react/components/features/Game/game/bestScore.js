@@ -32,14 +32,14 @@ export function loadBestScore() {
   }
 }
 
-export function saveBestScore(key, value) {
+export function saveBestScore(difficulty, value) {
   if (!isLocalStorageAvailable()) return;
 
-  const oldBestScore = JSON.parse(getStorageItem(KEY_BEST_SCORE));
+  const oldBestScore = loadBestScore();
 
   const newScore = {
     ...oldBestScore,
-    [key]: value
+    [difficulty]: value
   };
 
   setStorageItem(KEY_BEST_SCORE, JSON.stringify(newScore));
