@@ -23,6 +23,7 @@ import {
   loadBestScore,
   saveBestScore
 } from "./game/bestScore";
+import { preloadImages } from "../../../../js/utils/images";
 
 function Game() {
   // Game flow state
@@ -79,7 +80,7 @@ function Game() {
   };
 
   // Start screen handler
-  const handleGameStart = (difficultySelected) => {
+  const handleGameStart = async (difficultySelected) => {
     const isValidDifficulty = 
       Object.values(DIFFICULTY).includes(difficultySelected);
 
@@ -88,8 +89,12 @@ function Game() {
     setGameDifficulty(difficultySelected);
 
     const { deckSize } = difficultyConfig[difficultySelected];
-    setCardDeck(shuffleArray(cards).slice(0, deckSize));
+    const deck = shuffleArray(cards).slice(0, deckSize);
+    const deckImages = deck.map((card) => card.imageUrl);
 
+    await preloadImages(deckImages);
+
+    setCardDeck(deck);
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
