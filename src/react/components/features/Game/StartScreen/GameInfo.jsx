@@ -5,8 +5,7 @@ function GameInfo({ onNext }) {
   return (
     <div className="game-info">
       <p className="game-info__desc">
-        Test your memory by selecting unique cards.
-        Avoid clicking the same card twice and try to beat your high score.
+        Every card can only be selected once. Challenge your memory and beat your best score.
       </p>
 
       <button
