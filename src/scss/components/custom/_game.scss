@@ -8,17 +8,16 @@
 
 .game {
   background-color: $bg-surface;
-  min-height: 50svh;
-  max-width: 1000px;
+  max-width: 900px;
   width: 100%;
-  padding: 2rem 3rem;
+  padding: $spacing-xl $spacing-2xl $spacing-2xl;
   display: flex;
   flex-direction: column;
   border-radius: map.get($rounded-map, lg);
   box-shadow: $shadow-md;
 
   @include media-breakpoint-down(md) {
-    padding: 1.5rem;
+    padding: $spacing-lg $spacing-xl $spacing-xl;
     border-radius: 0;
   }
 
