@@ -27,7 +27,7 @@ import { preloadImages } from "../../../../js/utils/images";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMemory } from "@fortawesome/free-solid-svg-icons/faMemory";
+import { faClone } from "@fortawesome/free-solid-svg-icons/faClone";
 
 function Game() {
   // Game flow state
@@ -160,7 +160,7 @@ function Game() {
     <section className="game">
       <h1 className="game__title">
         <FontAwesomeIcon
-          icon={faMemory}
+          icon={faClone}
           className="game__title-icon"
           aria-hidden="true"
         />
