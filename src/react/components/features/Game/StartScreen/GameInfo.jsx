@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
 function GameInfo({ onNext }) {
   return (
@@ -7,7 +9,16 @@ function GameInfo({ onNext }) {
         Avoid clicking the same card twice and try to beat your high score.
       </p>
 
-      <button className="btn-primary btn-lg" onClick={onNext}>Play Game</button>
+      <button
+        className="btn-primary btn-lg"
+        onClick={onNext}
+      >
+        Start Game
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          aria-hidden="true"
+        />
+      </button>
     </div>
   );
 }
