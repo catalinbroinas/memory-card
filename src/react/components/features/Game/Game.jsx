@@ -25,6 +25,10 @@ import {
 } from "./game/bestScore";
 import { preloadImages } from "../../../../js/utils/images";
 
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMemory } from "@fortawesome/free-solid-svg-icons/faMemory";
+
 function Game() {
   // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
@@ -154,7 +158,15 @@ function Game() {
 
   return (
     <section className="game">
-      <h1 className="game__title">Memory Card</h1>
+      <h1 className="game__title">
+        <FontAwesomeIcon
+          icon={faMemory}
+          className="game__title-icon"
+          aria-hidden="true"
+        />
+
+        <span className="game__title-text">Memory Card</span>
+      </h1>
 
       {gameStatus === GAME_STATUS.START && (
         <StartScreen onStart={handleGameStart} />
