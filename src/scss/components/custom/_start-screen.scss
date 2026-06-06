@@ -26,11 +26,16 @@
     );
 
     background-color: $accent;
-    padding: 1rem 2rem;
+    padding: $spacing-md $spacing-xl;
     border-left: 2px solid $primary;
     border-top-right-radius: map.get($rounded-map, md);
     border-bottom-right-radius: map.get($rounded-map, md);
     margin: 0;
+
+    @include media-breakpoint-down(sm) {
+      font-size: $fs-base;
+      padding: $spacing-sm $spacing-md;
+    }
   }
 }
 
