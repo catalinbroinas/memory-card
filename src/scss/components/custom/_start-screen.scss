@@ -70,7 +70,7 @@
     padding: 2rem;
     border-radius: map.get($rounded-map, sm);
     box-shadow: $shadow-xs;
-    transition: box-shadow 0.25s ease, background 0.25s ease;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
 
     &:hover {
       box-shadow: $shadow-sm;
