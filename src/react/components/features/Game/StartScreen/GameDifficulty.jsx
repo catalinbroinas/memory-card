@@ -20,7 +20,7 @@ function GameDifficulty({ onSelectDifficulty }) {
             </span>
 
             <span className="game-difficulty__card-desc">
-              {option.rounds}{" "}rounds
+              {option.rounds}{" "}cards
             </span>
           </button>
         ))}
