@@ -32,6 +32,12 @@
   border-bottom-right-radius: map.get($rounded-map, md);
   padding: 1rem 2rem;
 
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
   &__item {
     display: flex;
     align-items: center;
