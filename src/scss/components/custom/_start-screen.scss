@@ -66,6 +66,15 @@
     gap: $spacing-lg;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+
+    @include media-breakpoint-down(md) {
+      justify-content: flex-start;
+    }
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
   }
 
   &__card {
