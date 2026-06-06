@@ -98,4 +98,10 @@
   display: flex;
   justify-content: center;
   gap: $spacing-lg;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
