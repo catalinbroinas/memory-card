@@ -1,9 +1,6 @@
 @use 'sass:map';
-@use '../../base/variables/colors' as *;
-@use '../../base/variables/typography' as *;
-@use '../../base/variables/spacing' as *;
-@use '../../base/variables/radius' as *;
-@use '../../base/variables/shadows' as *;
+
+@use '../../base/variables/' as *;
 @use '../../base/mixins' as *;
 
 // =================================
