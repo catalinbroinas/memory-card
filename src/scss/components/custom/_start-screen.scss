@@ -86,9 +86,15 @@
     box-shadow: $shadow-xs;
     transition: box-shadow 0.25s ease, background-color 0.25s ease;
 
-    &:hover {
-      box-shadow: $shadow-sm;
-      background-color: color.scale($accent, $lightness: -5%);
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: $shadow-sm;
+        background-color: color.scale($accent, $lightness: -5%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
     }
   }
 
