@@ -82,4 +82,20 @@
     box-shadow: $shadow-md;
     transform: translateY(-2px);
   }
+
+  &__header {
+    background-color: $accent;
+    padding: calc($spacing-sm + $spacing-xs) $spacing-md $spacing-sm;
+    border: 0;
+  }
+
+  &__title {
+    @include text-style(
+      $font-weight: 600,
+      $font-size: $fs-lg,
+      $color: $text-primary,
+      $line-height: 1.3
+    );
+    margin: 0;
+  }
 }
