@@ -1,10 +1,7 @@
 @use 'sass:map';
 @use 'sass:color';
-@use '../../base/variables/colors' as *;
-@use '../../base/variables/typography' as *;
-@use '../../base/variables/spacing' as *;
-@use '../../base/variables/shadows' as *;
-@use '../../base/variables/radius' as *;
+
+@use '../../base/variables/' as *;
 @use '../../base/mixins' as *;
 
 // =================================
@@ -109,7 +106,7 @@
     margin-bottom: $spacing-xs;
   }
 
-   &__card-desc {
+  &__card-desc {
     display: block;
     @include text-style(
       $font-weight: 400,
