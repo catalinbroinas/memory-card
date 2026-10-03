@@ -78,9 +78,15 @@
   box-shadow: $shadow-sm;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 
-  &:hover {
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 
   &__header {
