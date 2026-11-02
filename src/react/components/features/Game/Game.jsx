@@ -24,6 +24,7 @@ import {
   isDuplicate,
   isWin
 } from "./game/rules";
+import { loadCitiesDeck } from "./game/deck";
 import { getVisibleCards } from "./game/selectors";
 import {
   loadBestScore,
@@ -99,11 +100,7 @@ function Game() {
 
     // Cities mode
     if (mode === GAME_MODE.CITIES) {
-      const { deckSize } = difficultyConfig[difficulty];
-      const deck = shuffleArray(cards).slice(0, deckSize);
-      const deckImages = deck.map((card) => card.imageUrl);
-
-      await preloadImages(deckImages);
+      const deck = await loadCitiesDeck(difficulty);
 
       setCardDeck(deck);
       setGameStatus(GAME_STATUS.PLAYING);
