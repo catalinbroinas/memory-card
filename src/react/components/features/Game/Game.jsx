@@ -3,13 +3,9 @@ import { useState } from "react";
 // Date
 import {
   GAME_STATUS,
-  GAME_MODE,
-  DIFFICULTY,
-  DEFAULT_BEST_SCORE,
-  KEY_BEST_SCORE
+  GAME_MODE
 } from "../../../constants/gameConstants";
 import { difficultyConfig } from "../../../config/difficultyConfig";
-import { cards } from "../../../data/cards";
 
 // Components
 import StartScreen from "./StartScreen/StartScreen";
@@ -30,7 +26,6 @@ import {
   loadBestScore,
   saveBestScore
 } from "./game/bestScore";
-import { preloadImages } from "../../../../js/utils/images";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
