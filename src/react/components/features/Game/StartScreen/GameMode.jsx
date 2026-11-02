@@ -1,7 +1,11 @@
+// Data
+import { GAME_MODE } from "../../../../constants/gameConstants";
+
+// Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
-function GameInfo({ onNext }) {
+function GameMode({ onSelectMode }) {
   return (
     <div className="game-info">
       <p className="game-info__desc">
@@ -10,9 +14,20 @@ function GameInfo({ onNext }) {
 
       <button
         className="btn-primary btn-lg"
-        onClick={onNext}
+        onClick={() => onSelectMode(GAME_MODE.CITIES)}
       >
-        Start Game
+        Cities
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          aria-hidden="true"
+        />
+      </button>
+
+      <button
+        className="btn-primary btn-lg"
+        onClick={() => onSelectMode(GAME_MODE.POKEMON)}
+      >
+        Pokémon
         <FontAwesomeIcon
           icon={faArrowRight}
           aria-hidden="true"
@@ -22,4 +37,4 @@ function GameInfo({ onNext }) {
   );
 }
 
-export default GameInfo;
+export default GameMode;

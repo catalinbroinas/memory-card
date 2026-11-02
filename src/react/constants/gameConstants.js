@@ -1,5 +1,10 @@
 
 // Enums
+export const GAME_MODE = {
+  CITIES: 'cities',
+  POKEMON: 'pokemon'
+};
+
 export const DIFFICULTY = {
   EASY: 'easy',
   MEDIUM: 'medium',
@@ -22,6 +27,6 @@ export const GAME_STATUS = {
 };
 
 export const START_STEP = {
-  INFO: 'info',
+  MODE: 'mode',
   SETTINGS: 'settings',
 };

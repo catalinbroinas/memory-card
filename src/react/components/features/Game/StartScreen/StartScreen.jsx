@@ -4,18 +4,24 @@ import { useState } from "react";
 import { START_STEP } from "../../../../constants/gameConstants";
 
 // Components
-import GameInfo from "./GameInfo";
+import GameMode from "./GameMode";
 import GameDifficulty from "./GameDifficulty";
 
 function StartScreen({ onStart }) {
-  const [startStep, setStartStep] = useState(START_STEP.INFO);
+  const [mode, setMode] = useState(null);
+  const [startStep, setStartStep] = useState(START_STEP.MODE);
+
+  const handleModeSelect = (value) => {
+    setMode(value);
+    setStartStep(START_STEP.SETTINGS);
+  };
 
   return (
     <section className="start-screen">
       <h2 className="visually-hidden">Game setup</h2>
 
-      {startStep === START_STEP.INFO && (
-        <GameInfo onNext={() => setStartStep(START_STEP.SETTINGS)} />
+      {startStep === START_STEP.MODE && (
+        <GameMode onSelectMode={handleModeSelect} />
       )}
 
       {startStep === START_STEP.SETTINGS && (
