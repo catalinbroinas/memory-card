@@ -18,7 +18,12 @@ import EndScreen from "./EndScreen/EndScreen";
 
 // Helpers
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
-import { isValidCard, isDuplicate, isWin } from "./game/rules";
+import {
+  isValidGameConfig,
+  isValidCard,
+  isDuplicate,
+  isWin
+} from "./game/rules";
 import { getVisibleCards } from "./game/selectors";
 import {
   loadBestScore,
@@ -87,11 +92,7 @@ function Game() {
 
   // Start screen handler
   const handleGameStart = async ({ mode, difficulty }) => {
-    const isValidDifficulty = 
-      Object.values(DIFFICULTY).includes(difficulty);
-    const isValidMode = Object.values(GAME_MODE).includes(mode);
-
-    if (!isValidDifficulty || !isValidMode) return;
+    if (!isValidGameConfig(mode, difficulty)) return;
 
     setGameMode(mode);
     setGameDifficulty(difficulty);
