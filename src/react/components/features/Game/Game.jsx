@@ -3,6 +3,7 @@ import { useState } from "react";
 // Date
 import {
   GAME_STATUS,
+  GAME_MODE,
   DIFFICULTY,
   DEFAULT_BEST_SCORE,
   KEY_BEST_SCORE
@@ -32,6 +33,7 @@ import { faClone } from "@fortawesome/free-solid-svg-icons/faClone";
 function Game() {
   // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
+  const [gameMode, setGameMode] = useState(null);
   const [gameDifficulty, setGameDifficulty] = useState(null);
 
   // Score system state
@@ -84,22 +86,27 @@ function Game() {
   };
 
   // Start screen handler
-  const handleGameStart = async (difficultySelected) => {
+  const handleGameStart = async ({ mode, difficulty }) => {
     const isValidDifficulty = 
-      Object.values(DIFFICULTY).includes(difficultySelected);
+      Object.values(DIFFICULTY).includes(difficulty);
+    const isValidMode = Object.values(GAME_MODE).includes(mode);
 
-    if (!isValidDifficulty) return;
+    if (!isValidDifficulty || !isValidMode) return;
 
-    setGameDifficulty(difficultySelected);
+    setGameMode(mode);
+    setGameDifficulty(difficulty);
 
-    const { deckSize } = difficultyConfig[difficultySelected];
-    const deck = shuffleArray(cards).slice(0, deckSize);
-    const deckImages = deck.map((card) => card.imageUrl);
+    // Cities mode
+    if (mode === GAME_MODE.CITIES) {
+      const { deckSize } = difficultyConfig[difficulty];
+      const deck = shuffleArray(cards).slice(0, deckSize);
+      const deckImages = deck.map((card) => card.imageUrl);
 
-    await preloadImages(deckImages);
+      await preloadImages(deckImages);
 
-    setCardDeck(deck);
-    setGameStatus(GAME_STATUS.PLAYING);
+      setCardDeck(deck);
+      setGameStatus(GAME_STATUS.PLAYING);
+    }
   };
 
   // Game flow handler

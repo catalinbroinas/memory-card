@@ -11,9 +11,13 @@ function StartScreen({ onStart }) {
   const [mode, setMode] = useState(null);
   const [startStep, setStartStep] = useState(START_STEP.MODE);
 
-  const handleModeSelect = (value) => {
-    setMode(value);
+  const handleModeSelect = (mode) => {
+    setMode(mode);
     setStartStep(START_STEP.SETTINGS);
+  };
+
+  const handleDifficultySelect = (difficulty) => {
+    onStart({ mode, difficulty });
   };
 
   return (
@@ -25,7 +29,7 @@ function StartScreen({ onStart }) {
       )}
 
       {startStep === START_STEP.SETTINGS && (
-        <GameDifficulty onSelectDifficulty={onStart} />
+        <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
       )}
     </section>
   );
