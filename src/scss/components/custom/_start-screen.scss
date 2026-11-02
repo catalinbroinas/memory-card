@@ -34,6 +34,12 @@
       padding: $spacing-sm $spacing-md;
     }
   }
+
+  &__action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+  }
 }
 
 // =================================

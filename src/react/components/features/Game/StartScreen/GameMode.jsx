@@ -3,7 +3,7 @@ import { GAME_MODE } from "../../../../constants/gameConstants";
 
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
+import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay";
 
 function GameMode({ onSelectMode }) {
   return (
@@ -18,9 +18,9 @@ function GameMode({ onSelectMode }) {
             className="btn-primary btn-lg"
             onClick={() => onSelectMode(GAME_MODE.CITIES)}
           >
-            Cities
+            Play with Cities
             <FontAwesomeIcon
-              icon={faArrowRight}
+              icon={faPlay}
               aria-hidden="true"
             />
           </button>
@@ -31,9 +31,9 @@ function GameMode({ onSelectMode }) {
             className="btn-primary btn-lg"
             onClick={() => onSelectMode(GAME_MODE.POKEMON)}
           >
-            Pokémon
+            Play with Pokémon
             <FontAwesomeIcon
-              icon={faArrowRight}
+              icon={faPlay}
               aria-hidden="true"
             />
           </button>
