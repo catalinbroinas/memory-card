@@ -7,32 +7,38 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
 function GameMode({ onSelectMode }) {
   return (
-    <div className="game-info">
-      <p className="game-info__desc">
+    <div className="game-mode">
+      <p className="game-mode__desc">
         Every card can only be selected once. Challenge your memory and beat your best score.
       </p>
 
-      <button
-        className="btn-primary btn-lg"
-        onClick={() => onSelectMode(GAME_MODE.CITIES)}
-      >
-        Cities
-        <FontAwesomeIcon
-          icon={faArrowRight}
-          aria-hidden="true"
-        />
-      </button>
+      <ul className="game-mode__action">
+        <li className="game-mode__action-item">
+          <button
+            className="btn-primary btn-lg"
+            onClick={() => onSelectMode(GAME_MODE.CITIES)}
+          >
+            Cities
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              aria-hidden="true"
+            />
+          </button>
+        </li>
 
-      <button
-        className="btn-primary btn-lg"
-        onClick={() => onSelectMode(GAME_MODE.POKEMON)}
-      >
-        Pokémon
-        <FontAwesomeIcon
-          icon={faArrowRight}
-          aria-hidden="true"
-        />
-      </button>
+        <li className="game-mode__action-item">
+          <button
+            className="btn-primary btn-lg"
+            onClick={() => onSelectMode(GAME_MODE.POKEMON)}
+          >
+            Pokémon
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              aria-hidden="true"
+            />
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }
