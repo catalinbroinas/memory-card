@@ -12,7 +12,7 @@ function StartScreen({ onStart }) {
 
   return (
     <section className="start-screen">
-      <h2 className="visually-hidden">Gam`e setup</h2>
+      <h2 className="visually-hidden">Game setup</h2>
 
       {startStep === START_STEP.INFO && (
         <GameInfo onNext={() => setStartStep(START_STEP.SETTINGS)} />
