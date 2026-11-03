@@ -22,7 +22,7 @@ export async function loadCitiesDeck(difficulty) {
 export async function loadPokemonDeck(difficulty) {
   const { deckSize } = difficultyConfig[difficulty];
 
-  const pokemonList = await getPokemonList(151);
+  const pokemonList = await getPokemonList();
   const selectedPokemon = shuffleArray(pokemonList).slice(0, deckSize);
 
   const deck = await Promise.all(

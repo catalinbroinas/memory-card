@@ -1,4 +1,7 @@
-import { API_POKEMON_URL } from "../constants/apiConstants";
+import {
+  API_POKEMON_URL,
+  POKEMON_LIMIT
+} from "../constants/apiConstants";
 
 export async function getPokemon(name) {
   const response = await fetch(`${API_POKEMON_URL}${name}`);
@@ -16,7 +19,7 @@ export async function getPokemon(name) {
   };
 }
 
-export async function getPokemonList(limit) {
+export async function getPokemonList(limit = POKEMON_LIMIT) {
   const response = await fetch(`${API_POKEMON_URL}?limit=${limit}`);
 
   if (!response.ok) {
