@@ -12,7 +12,7 @@ export async function getPokemon(name) {
   return {
     id: data.id,
     name: data.name,
-    imageUrl: data.sprites.front_default
+    imageUrl: data.sprites.other['official-artwork'].front_default
   };
 }
 
