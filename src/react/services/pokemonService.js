@@ -15,3 +15,15 @@ export async function getPokemon(name) {
     imageUrl: data.sprites.front_default
   };
 }
+
+export async function getPokemonList(limit) {
+  const response = await fetch(`${API_POKEMON_URL}?limit=${limit}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch Pokemon list with ${limit} limit.`);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+}
