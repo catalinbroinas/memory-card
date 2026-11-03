@@ -93,20 +93,12 @@ function Game() {
     setGameMode(mode);
     setGameDifficulty(difficulty);
 
-    // Cities mode
-    if (mode === GAME_MODE.CITIES) {
-      const deck = await loadCitiesDeck(difficulty);
+    const deck = mode === GAME_MODE.CITIES
+      ? await loadCitiesDeck(difficulty)
+      : await loadPokemonDeck(difficulty);
 
-      setCardDeck(deck);
-      setGameStatus(GAME_STATUS.PLAYING);
-    }
-
-    if (mode === GAME_MODE.POKEMON) {
-      const deck = await loadPokemonDeck(difficulty);
-
-      setCardDeck(deck);
-      setGameStatus(GAME_STATUS.PLAYING);
-    }
+    setCardDeck(deck);
+    setGameStatus(GAME_STATUS.PLAYING);
   };
 
   // Game flow handler
