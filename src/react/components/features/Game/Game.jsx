@@ -126,6 +126,7 @@ function Game() {
 
   // Reset game
   const handleGameReset = () => {
+    setGameMode(null);
     setGameDifficulty(null);
     setScore(0);
     setIsNewRecord(false);
