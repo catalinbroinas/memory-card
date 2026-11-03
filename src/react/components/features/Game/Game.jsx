@@ -20,7 +20,7 @@ import {
   isDuplicate,
   isWin
 } from "./game/rules";
-import { loadCitiesDeck } from "./game/deck";
+import { loadCitiesDeck, loadPokemonDeck } from "./game/deck";
 import { getVisibleCards } from "./game/selectors";
 import {
   loadBestScore,
@@ -96,6 +96,13 @@ function Game() {
     // Cities mode
     if (mode === GAME_MODE.CITIES) {
       const deck = await loadCitiesDeck(difficulty);
+
+      setCardDeck(deck);
+      setGameStatus(GAME_STATUS.PLAYING);
+    }
+
+    if (mode === GAME_MODE.POKEMON) {
+      const deck = await loadPokemonDeck(difficulty);
 
       setCardDeck(deck);
       setGameStatus(GAME_STATUS.PLAYING);
