@@ -76,18 +76,21 @@ function Game() {
   };
 
   const updateBestScore = (finalScore) => {
-    if (finalScore <= bestScore[gameDifficulty]) return;
+    if (finalScore <= bestScore[gameMode][gameDifficulty]) return;
 
-    if (bestScore[gameDifficulty] > 0) {
+    if (bestScore[gameMode][gameDifficulty] > 0) {
       setIsNewRecord(true);
     }
 
     setBestScore((prev) => ({
       ...prev,
-      [gameDifficulty]: finalScore
+      [gameMode]: {
+        ...prev[gameMode],
+        [gameDifficulty]: finalScore
+      }
     }));
 
-    saveBestScore(gameDifficulty, finalScore);
+    saveBestScore(gameMode, gameDifficulty, finalScore);
   };
 
   // Start screen handler
@@ -163,11 +166,14 @@ function Game() {
 
     setBestScore((prev) => ({
       ...prev,
-      [gameDifficulty]: 0
+      [gameMode]: {
+        ...prev[gameMode],
+        [gameDifficulty]: 0
+      }
     }));
     setIsNewRecord(false);
 
-    saveBestScore(gameDifficulty, 0);
+    saveBestScore(gameMode, gameDifficulty, 0);
   };
 
   return (
@@ -206,7 +212,7 @@ function Game() {
         <EndScreen
           difficultyId={gameDifficulty}
           score={score}
-          bestScore={bestScore[gameDifficulty]}
+          bestScore={bestScore[gameMode][gameDifficulty]}
           isVictory={isVictory}
           isNewRecord={isNewRecord}
           onReset={handleGameReset}

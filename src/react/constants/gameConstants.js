@@ -12,9 +12,16 @@ export const DIFFICULTY = {
 };
 
 export const DEFAULT_BEST_SCORE = {
-  easy: 0,
-  medium: 0,
-  hard: 0
+  cities: {
+    easy: 0,
+    medium: 0,
+    hard: 0
+  },
+  pokemon: {
+    easy: 0,
+    medium: 0,
+    hard: 0
+  },
 };
 
 export const KEY_BEST_SCORE = "bestScore";

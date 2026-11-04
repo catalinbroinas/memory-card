@@ -8,7 +8,8 @@ import {
 import {
   isLocalStorageAvailable,
   getStorageItem,
-  setStorageItem
+  setStorageItem,
+  removeStorageItem
 } from "../../../../../js/utils/storage";
 
 export function loadBestScore() {
@@ -23,23 +24,36 @@ export function loadBestScore() {
   }
 
   try {
-    return {
-      ...DEFAULT_BEST_SCORE,
-      ...JSON.parse(savedScore)
-    };
+    const parsedScore = JSON.parse(savedScore);
+
+    const isValid = Object.keys(DEFAULT_BEST_SCORE).every((mode) => {
+      return Object.keys(DEFAULT_BEST_SCORE[mode]).every((difficulty) => {
+        return typeof parsedScore?.[mode]?.[difficulty] === 'number';
+      });
+    });
+
+    if (!isValid) {
+      removeStorageItem(KEY_BEST_SCORE);
+      return structuredClone(DEFAULT_BEST_SCORE);
+    }
+
+    return parsedScore;
   } catch {
     return { ...DEFAULT_BEST_SCORE };
   }
 }
 
-export function saveBestScore(difficulty, value) {
+export function saveBestScore(mode, difficulty, value) {
   if (!isLocalStorageAvailable()) return;
 
   const oldBestScore = loadBestScore();
 
   const newScore = {
     ...oldBestScore,
-    [difficulty]: value
+    [mode]: {
+      ...oldBestScore[mode],
+      [difficulty]: value
+    }
   };
 
   setStorageItem(KEY_BEST_SCORE, JSON.stringify(newScore));
