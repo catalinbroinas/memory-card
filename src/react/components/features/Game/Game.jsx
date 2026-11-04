@@ -37,6 +37,10 @@ function Game() {
   const [gameMode, setGameMode] = useState(null);
   const [gameDifficulty, setGameDifficulty] = useState(null);
 
+  // Game status
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   // Score system state
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(() => loadBestScore());
@@ -93,12 +97,22 @@ function Game() {
     setGameMode(mode);
     setGameDifficulty(difficulty);
 
-    const deck = mode === GAME_MODE.CITIES
-      ? await loadCitiesDeck(difficulty)
-      : await loadPokemonDeck(difficulty);
+    setIsLoading(true);
+    setError(null);
 
-    setCardDeck(deck);
-    setGameStatus(GAME_STATUS.PLAYING);
+    try {
+      const deck = mode === GAME_MODE.CITIES
+        ? await loadCitiesDeck(difficulty)
+        : await loadPokemonDeck(difficulty);
+
+      setCardDeck(deck);
+      setGameStatus(GAME_STATUS.PLAYING);
+    } catch (error) {
+      console.error('Failed to start game:', error);
+      setError('Unable to load the game. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Game flow handler
@@ -169,7 +183,13 @@ function Game() {
       </h1>
 
       {gameStatus === GAME_STATUS.START && (
-        <StartScreen onStart={handleGameStart} />
+        <>
+          <StartScreen onStart={handleGameStart} />
+
+          {isLoading && <p>Loading game...</p>}
+
+          {error && <p className="alert-danger" role="alert">{error}</p>}
+        </>
       )}
 
       {gameStatus === GAME_STATUS.PLAYING && (
