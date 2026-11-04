@@ -12,6 +12,11 @@ import { preloadImages } from "../../../../../js/utils/images";
 export async function loadCitiesDeck(difficulty) {
   const { deckSize } = difficultyConfig[difficulty];
   const deck = shuffleArray(cards).slice(0, deckSize);
+
+  if (!Array.isArray(deck) || deck.length !== deckSize) {
+    throw new Error('Invalid cities deck received from local data.');
+  }
+
   const deckImages = deck.map((card) => card.imageUrl);
 
   await preloadImages(deckImages);
