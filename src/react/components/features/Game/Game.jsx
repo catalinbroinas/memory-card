@@ -189,13 +189,11 @@ function Game() {
       </h1>
 
       {gameStatus === GAME_STATUS.START && (
-        <>
-          <StartScreen onStart={handleGameStart} />
-
-          {isLoading && <p>Loading game...</p>}
-
-          {error && <p className="alert-danger" role="alert">{error}</p>}
-        </>
+        <StartScreen
+          loading={isLoading}
+          error={error}
+          onStart={handleGameStart} 
+        />
       )}
 
       {gameStatus === GAME_STATUS.PLAYING && (

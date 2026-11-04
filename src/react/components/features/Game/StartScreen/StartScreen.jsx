@@ -7,7 +7,7 @@ import { START_STEP } from "../../../../constants/gameConstants";
 import GameMode from "./GameMode";
 import GameDifficulty from "./GameDifficulty";
 
-function StartScreen({ onStart }) {
+function StartScreen({ loading, error, onStart }) {
   const [mode, setMode] = useState(null);
   const [startStep, setStartStep] = useState(START_STEP.MODE);
 
@@ -29,7 +29,15 @@ function StartScreen({ onStart }) {
       )}
 
       {startStep === START_STEP.SETTINGS && (
-        <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
+        <>
+          {loading ? (
+            <p>Loading game...</p>
+          ) : error ? (
+            <p className="alert-danger" role="alert">{error}</p>
+          ) : (
+            <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
+          )}
+        </>
       )}
     </section>
   );
