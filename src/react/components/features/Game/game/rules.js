@@ -11,6 +11,12 @@ export function isValidGameConfig(mode, difficulty) {
   return isValidMode && isValidDifficulty;
 }
 
+export function getGameModeLabel(modeId) {
+  return Object.values(GAME_MODE).find(
+    (mode) => mode.id === modeId
+  )?.label;
+};
+
 export function isValidCard(deck, cardId) {
   return deck.some((card) => card.id === cardId);
 }

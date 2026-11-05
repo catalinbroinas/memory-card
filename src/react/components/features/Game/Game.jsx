@@ -16,6 +16,7 @@ import EndScreen from "./EndScreen/EndScreen";
 import { shuffleArray } from "../../../../js/utils/shuffleArray";
 import {
   isValidGameConfig,
+  getGameModeLabel,
   isValidCard,
   isDuplicate,
   isWin
@@ -234,7 +235,7 @@ function Game() {
 
       {gameStatus === GAME_STATUS.END && (
         <EndScreen
-          mode={gameMode}
+          mode={getGameModeLabel(gameMode)}
           difficultyId={gameDifficulty}
           score={score}
           bestScore={bestScore[gameMode][gameDifficulty]}

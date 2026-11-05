@@ -20,14 +20,12 @@ function EndScreen({
     difficulty.id === difficultyId
   ))?.label ?? null;
 
-  const modeLabel = `${mode.charAt(0).toUpperCase()}${mode.slice(1)}`;
-
   return (
     <section className="end-screen">
       <h2 className="visually-hidden">Game results</h2>
 
       <GameResult
-        mode={modeLabel}
+        mode={mode}
         difficulty={difficultyLabel}
         score={score}
         bestScore={bestScore}
