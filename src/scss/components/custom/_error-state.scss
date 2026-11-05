@@ -1,0 +1,14 @@
+@use '../../base/variables/spacing' as *;
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-md $spacing-lg;
+  }
+}
