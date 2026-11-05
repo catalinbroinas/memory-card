@@ -9,14 +9,16 @@ function ErrorState({ message, onRetry, onReset }) {
       </div>
 
       <div className="error-state__actions">
-        <button 
+        <button
+          type="button"
           className="btn-primary-outline"
           onClick={onReset}
         >
-          Reset
+          Restart
         </button>
 
-        <button 
+        <button
+          type="button"
           className="btn-primary"
           onClick={onRetry}
         >
