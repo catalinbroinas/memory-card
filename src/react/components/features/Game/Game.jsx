@@ -93,13 +93,7 @@ function Game() {
     saveBestScore(gameMode, gameDifficulty, finalScore);
   };
 
-  // Start screen handler
-  const handleGameStart = async ({ mode, difficulty }) => {
-    if (!isValidGameConfig(mode, difficulty)) return;
-
-    setGameMode(mode);
-    setGameDifficulty(difficulty);
-
+  const loadGame = async (mode, difficulty) => {
     setIsLoading(true);
     setError(null);
 
@@ -111,11 +105,21 @@ function Game() {
       setCardDeck(deck);
       setGameStatus(GAME_STATUS.PLAYING);
     } catch (error) {
-      console.error('Failed to start game:', error);
+      console.error('Failed to load game:', error);
       setError('Unable to load the game. Please try again.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Start screen handler
+  const handleGameStart = async ({ mode, difficulty }) => {
+    if (!isValidGameConfig(mode, difficulty)) return;
+
+    setGameMode(mode);
+    setGameDifficulty(difficulty);
+
+    loadGame(mode, difficulty);
   };
 
   // Game flow handler
@@ -165,22 +169,7 @@ function Game() {
 
   // Retry game
   const handleRetry = async () => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const deck = gameMode === GAME_MODE.CITIES
-        ? await loadCitiesDeck(gameDifficulty)
-        : await loadPokemonDeck(gameDifficulty);
-
-      setCardDeck(deck);
-      setGameStatus(GAME_STATUS.PLAYING);
-    } catch (error) {
-      console.error('Failed to start game:', error);
-      setError('Unable to load the game. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    loadGame(gameMode, gameDifficulty);
   };
 
   const resetBestScore = () => {
