@@ -145,6 +145,8 @@ function Game() {
   const handleGameReset = () => {
     setGameMode(null);
     setGameDifficulty(null);
+    setIsLoading(false);
+    setError(null);
     setScore(0);
     setIsNewRecord(false);
     setCardDeck([]);
@@ -159,6 +161,26 @@ function Game() {
     setSelectedCardIds([]);
     setCardDeck((prev) => shuffleArray(prev));
     setGameStatus(GAME_STATUS.PLAYING);
+  };
+
+  // Retry game
+  const handleRetry = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const deck = gameMode === GAME_MODE.CITIES
+        ? await loadCitiesDeck(gameDifficulty)
+        : await loadPokemonDeck(gameDifficulty);
+
+      setCardDeck(deck);
+      setGameStatus(GAME_STATUS.PLAYING);
+    } catch (error) {
+      console.error('Failed to start game:', error);
+      setError('Unable to load the game. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const resetBestScore = () => {
@@ -192,7 +214,9 @@ function Game() {
         <StartScreen
           loading={isLoading}
           error={error}
-          onStart={handleGameStart} 
+          onStart={handleGameStart}
+          onRetry={handleRetry}
+          onReset={handleGameReset}
         />
       )}
 

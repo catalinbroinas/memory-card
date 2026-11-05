@@ -22,6 +22,11 @@ function StartScreen({ loading, error, onStart, onRetry, onReset }) {
     onStart({ mode, difficulty });
   };
 
+  const handleReset = () => {
+    setStartStep(START_STEP.MODE);
+    onReset();
+  };
+
   return (
     <section className="start-screen">
       <h2 className="visually-hidden">Game setup</h2>
@@ -35,7 +40,11 @@ function StartScreen({ loading, error, onStart, onRetry, onReset }) {
           {loading ? (
             <LoadingState text={"Loading game..."} />
           ) : error ? (
-            <ErrorState message={error} />
+            <ErrorState
+              message={error}
+              onRetry={onRetry}
+              onReset={handleReset}
+            />
           ) : (
             <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
           )}
