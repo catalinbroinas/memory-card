@@ -43,6 +43,13 @@ export async function getPokemonList(limit = POKEMON_LIMIT) {
 
   const data = await response.json();
 
+  if (
+    !Array.isArray(data.results) ||
+    !data.results.every((pokemon) => typeof pokemon.name === 'string')
+  ) {
+    throw new Error('Invalid Pokémon list received from API.');
+  }
+
   pokemonListCache.set(limit, data.results);
 
   return data.results;
