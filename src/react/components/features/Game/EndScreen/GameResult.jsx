@@ -1,5 +1,6 @@
 
 function GameResult({
+  mode,
   difficulty,
   score,
   bestScore,
@@ -24,6 +25,11 @@ function GameResult({
       </h3>
 
       <ul className="game-result__list">
+        <li className="game-result__item">
+          <span className="game-result__label">Game mode:</span>
+          <strong className="game-result__value">{mode}</strong>
+        </li>
+
         <li className="game-result__item">
           <span className="game-result__label">Difficulty:</span>
           <strong className="game-result__value">{difficulty}</strong>

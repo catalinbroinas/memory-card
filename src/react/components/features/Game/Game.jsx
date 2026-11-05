@@ -234,6 +234,7 @@ function Game() {
 
       {gameStatus === GAME_STATUS.END && (
         <EndScreen
+          mode={gameMode}
           difficultyId={gameDifficulty}
           score={score}
           bestScore={bestScore[gameMode][gameDifficulty]}
