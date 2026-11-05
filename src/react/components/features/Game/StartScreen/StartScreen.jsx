@@ -6,6 +6,7 @@ import { START_STEP } from "../../../../constants/gameConstants";
 // Components
 import GameMode from "./GameMode";
 import GameDifficulty from "./GameDifficulty";
+import LoadingState from "../../../UI/LoadingState";
 
 function StartScreen({ loading, error, onStart }) {
   const [mode, setMode] = useState(null);
@@ -31,7 +32,7 @@ function StartScreen({ loading, error, onStart }) {
       {startStep === START_STEP.SETTINGS && (
         <>
           {loading ? (
-            <p>Loading game...</p>
+            <LoadingState text={"Loading game..."} />
           ) : error ? (
             <p className="alert-danger" role="alert">{error}</p>
           ) : (
