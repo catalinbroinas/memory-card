@@ -4,7 +4,8 @@ import {
 } from "../../../../constants/gameConstants";
 
 export function isValidGameConfig(mode, difficulty) {
-  const isValidMode = Object.values(GAME_MODE).includes(mode);
+  const isValidMode = Object.values(GAME_MODE)
+    .some((gameMode) => gameMode.id === mode);
   const isValidDifficulty = Object.values(DIFFICULTY).includes(difficulty);
 
   return isValidMode && isValidDifficulty;

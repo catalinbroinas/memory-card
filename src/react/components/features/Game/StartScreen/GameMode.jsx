@@ -16,9 +16,9 @@ function GameMode({ onSelectMode }) {
         <li className="game-mode__action-item">
           <button
             className="btn-primary btn-lg"
-            onClick={() => onSelectMode(GAME_MODE.CITIES)}
+            onClick={() => onSelectMode(GAME_MODE.CITIES.id)}
           >
-            Play with Cities
+            Play {GAME_MODE.CITIES.label}
             <FontAwesomeIcon
               icon={faPlay}
               aria-hidden="true"
@@ -29,9 +29,9 @@ function GameMode({ onSelectMode }) {
         <li className="game-mode__action-item">
           <button
             className="btn-primary btn-lg"
-            onClick={() => onSelectMode(GAME_MODE.POKEMON)}
+            onClick={() => onSelectMode(GAME_MODE.POKEMON.id)}
           >
-            Play with Pokémon
+            Play {GAME_MODE.POKEMON.label}
             <FontAwesomeIcon
               icon={faPlay}
               aria-hidden="true"

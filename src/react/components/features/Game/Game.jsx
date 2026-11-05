@@ -103,7 +103,7 @@ function Game() {
     const startTime = Date.now();
 
     try {
-      const deck = mode === GAME_MODE.CITIES
+      const deck = mode === GAME_MODE.CITIES.id
         ? await loadCitiesDeck(difficulty)
         : await loadPokemonDeck(difficulty);
 

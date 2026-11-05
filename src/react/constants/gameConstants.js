@@ -1,8 +1,14 @@
 
 // Enums
 export const GAME_MODE = {
-  CITIES: 'cities',
-  POKEMON: 'pokemon'
+  CITIES: {
+    id: 'cities',
+    label: 'Cities'
+  },
+  POKEMON: {
+    id: 'pokemon',
+    label: 'Pokémon'
+  }
 };
 
 export const DIFFICULTY = {
