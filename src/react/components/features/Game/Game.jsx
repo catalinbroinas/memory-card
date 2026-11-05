@@ -50,6 +50,9 @@ function Game() {
   const [cardDeck, setCardDeck] = useState([]);
   const [selectedCardIds, setSelectedCardIds] = useState([]);
 
+  // Game loading time
+  const MIN_LOADING_TIME = 800;
+
   // Game flow
   const currentRound = score + 1;
   const currentDifficultyConfig = gameDifficulty
@@ -97,6 +100,8 @@ function Game() {
     setIsLoading(true);
     setError(null);
 
+    const startTime = Date.now();
+
     try {
       const deck = mode === GAME_MODE.CITIES
         ? await loadCitiesDeck(difficulty)
@@ -106,6 +111,14 @@ function Game() {
       setGameStatus(GAME_STATUS.PLAYING);
     } catch (error) {
       console.error('Failed to load game:', error);
+
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = MIN_LOADING_TIME - elapsedTime;
+
+      if (remainingTime > 0) {
+        await new Promise((resolve) => setTimeout(resolve, remainingTime));
+      }
+
       setError('Unable to load the game. Please try again.');
     } finally {
       setIsLoading(false);
