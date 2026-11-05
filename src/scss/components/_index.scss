@@ -1,8 +1,10 @@
 @use 'template/alerts';
 @use 'template/buttons';
 @use 'template/cards';
-@use 'custom/loading-state';
-@use 'custom/error-state';
+
+@use 'custom/ui/loading-state';
+@use 'custom/ui/error-state';
+
 @use 'custom/game';
 @use 'custom/start-screen';
 @use 'custom/game-screen';
