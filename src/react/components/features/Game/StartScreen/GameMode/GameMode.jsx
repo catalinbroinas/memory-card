@@ -1,5 +1,5 @@
 // Data
-import { GAME_MODE } from "../../../../constants/gameConstants";
+import { GAME_MODE } from "../../../../../constants/gameConstants";
 
 // Component
 import GameModeCard from "./GameModeCard";
@@ -14,7 +14,10 @@ function GameMode({ onSelectMode }) {
       <ul className="game-mode__action">
         {Object.values(GAME_MODE).map((mode) => (
           <li key={mode.id} className="game-mode__action-item">
-            <GameModeCard mode={mode} onSelect={() => onSelectMode(mode.id)} />
+            <GameModeCard
+              mode={mode}
+              onSelect={() => onSelectMode(mode.id)}
+            />
           </li>
         ))}
       </ul>

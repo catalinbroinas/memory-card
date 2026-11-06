@@ -4,7 +4,7 @@ import { useState } from "react";
 import { START_STEP } from "../../../../constants/gameConstants";
 
 // Components
-import GameMode from "./GameMode";
+import GameMode from "./GameMode/GameMode";
 import GameDifficulty from "./GameDifficulty";
 import LoadingState from "../../../UI/LoadingState";
 import ErrorState from "../../../UI/ErrorState";
