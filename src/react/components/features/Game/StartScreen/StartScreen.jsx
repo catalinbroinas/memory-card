@@ -13,8 +13,8 @@ function StartScreen({ loading, error, onStart, onRetry, onReset }) {
   const [mode, setMode] = useState(null);
   const [startStep, setStartStep] = useState(START_STEP.MODE);
 
-  const handleModeSelect = (mode) => {
-    setMode(mode);
+  const handleModeSelect = (selectedMode) => {
+    setMode(selectedMode);
     setStartStep(START_STEP.SETTINGS);
   };
 
@@ -36,19 +36,17 @@ function StartScreen({ loading, error, onStart, onRetry, onReset }) {
       )}
 
       {startStep === START_STEP.SETTINGS && (
-        <>
-          {loading ? (
-            <LoadingState text={"Loading game..."} />
-          ) : error ? (
-            <ErrorState
-              message={error}
-              onRetry={onRetry}
-              onReset={handleReset}
-            />
-          ) : (
-            <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
-          )}
-        </>
+        loading ? (
+          <LoadingState text="Loading game..." />
+        ) : error ? (
+          <ErrorState
+            message={error}
+            onRetry={onRetry}
+            onReset={handleReset}
+          />
+        ) : (
+          <GameDifficulty onSelectDifficulty={handleDifficultySelect} />
+        )
       )}
     </section>
   );
