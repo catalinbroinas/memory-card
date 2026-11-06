@@ -43,7 +43,43 @@
   }
 
   &__action-item {
-    width: 300px;
+    flex: 0 1 300px;
+  }
+}
+
+// =================================
+//   GAME MODE CARD
+// =================================
+
+.game-mode-card {
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &__header {
+    display: block;
+    background-color: color.scale($accent, $lightness: 40%);
+    padding: calc($spacing-sm + $spacing-xs) $spacing-md;
+    border: 0;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__text {
+    display: block;
   }
 }
 

@@ -8,17 +8,15 @@ function GameModeCard({ mode, onSelect }) {
       type="button"
       onClick={onSelect}
     >
-      <img src={imageUrl} alt={label} className="card-img" />
+      <img src={imageUrl} alt="" className="card-img" />
 
-      <div className="card-header">
-        <h3 className="card-title">{label}</h3>
-      </div>
+      <span className="card-header game-mode-card__header">
+        <span className="card-title game-mode-card__title">{label}</span>
 
-      <div className="card-body">
-        <p className="card-text">
+        <span className="card-text game-mode-card__text">
           {description}
-        </p>
-      </div>
+        </span>
+      </span>
     </button>
   );
 }
