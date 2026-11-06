@@ -1,13 +1,19 @@
+import citiesImg from "../../assets/images/gameMode/cities.webp";
+import pokemonImg from "../../assets/images/gameMode/pokemon.webp";
 
 // Enums
 export const GAME_MODE = {
   CITIES: {
     id: 'cities',
-    label: 'Cities'
+    label: 'Cities',
+    description: 'Test your memory with cities.',
+    imageUrl: citiesImg
   },
   POKEMON: {
     id: 'pokemon',
-    label: 'Pokémon'
+    label: 'Pokémon',
+    description: 'Test your memory with Pokémon.',
+    imageUrl: pokemonImg
   }
 };
 
