@@ -87,12 +87,14 @@
   }
 
   &__header {
+    display: block;
     background-color: $accent;
     padding: calc($spacing-sm + $spacing-xs) $spacing-md $spacing-sm;
     border: 0;
   }
 
   &__title {
+    display: block;
     @include text-style(
       $font-weight: 600,
       $font-size: $fs-lg,

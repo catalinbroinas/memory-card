@@ -8,9 +8,9 @@ function MemoryCard({ name, imageUrl, onSelect}) {
     >
       <img src={imageUrl} alt={name} className="card-img" />
 
-      <div className="card-header memory-card__header">
-        <h3 className="card-title memory-card__title">{name}</h3>
-      </div>
+      <span className="card-header memory-card__header">
+        <span className="card-title memory-card__title">{name}</span>
+      </span>
     </button>
   );
 }
