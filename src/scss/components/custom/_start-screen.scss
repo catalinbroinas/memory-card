@@ -38,7 +38,12 @@
   &__action {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-lg;
+    justify-content: center;
+    gap: $spacing-lg $spacing-xl;
+  }
+
+  &__action-item {
+    width: 300px;
   }
 }
 
