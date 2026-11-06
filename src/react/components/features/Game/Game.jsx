@@ -32,16 +32,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClone } from "@fortawesome/free-solid-svg-icons/faClone";
 
-// Game loading time
 const MIN_LOADING_TIME = 800;
 
 function Game() {
   // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
+  
   const [gameMode, setGameMode] = useState(null);
   const [gameDifficulty, setGameDifficulty] = useState(null);
 
-  // Game status
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -69,7 +68,6 @@ function Game() {
     cardsPerRound: currentDifficultyConfig?.cardsPerRound ?? 0
   });
 
-  // Update Game progress
   const updateProgress = (cardId) => {
     setSelectedCardIds((prev) => [...prev, cardId]);
 
@@ -126,7 +124,6 @@ function Game() {
     }
   };
 
-  // Start screen handler
   const handleGameStart = ({ mode, difficulty }) => {
     if (!isValidGameConfig(mode, difficulty)) return;
 
@@ -136,7 +133,6 @@ function Game() {
     loadGame(mode, difficulty);
   };
 
-  // Game flow handler
   const handleSelectCard = (cardId) => {
     if (!isValidCard(cardDeck, cardId)) return;
 
@@ -159,7 +155,6 @@ function Game() {
     setCardDeck((prev) => shuffleArray(prev));
   };
 
-  // Reset game
   const handleGameReset = () => {
     setGameMode(null);
     setGameDifficulty(null);
@@ -172,7 +167,6 @@ function Game() {
     setGameStatus(GAME_STATUS.START);
   };
 
-  // Replay game
   const handleGameReplay = () => {
     setScore(0);
     setIsNewRecord(false);
@@ -181,7 +175,6 @@ function Game() {
     setGameStatus(GAME_STATUS.PLAYING);
   };
 
-  // Retry game
   const handleRetry = () => {
     loadGame(gameMode, gameDifficulty);
   };
