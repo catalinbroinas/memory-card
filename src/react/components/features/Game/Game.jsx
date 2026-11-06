@@ -32,6 +32,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClone } from "@fortawesome/free-solid-svg-icons/faClone";
 
+// Game loading time
+const MIN_LOADING_TIME = 800;
+
 function Game() {
   // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
@@ -50,9 +53,6 @@ function Game() {
   // Game data state
   const [cardDeck, setCardDeck] = useState([]);
   const [selectedCardIds, setSelectedCardIds] = useState([]);
-
-  // Game loading time
-  const MIN_LOADING_TIME = 800;
 
   // Game flow
   const currentRound = score + 1;
@@ -127,7 +127,7 @@ function Game() {
   };
 
   // Start screen handler
-  const handleGameStart = async ({ mode, difficulty }) => {
+  const handleGameStart = ({ mode, difficulty }) => {
     if (!isValidGameConfig(mode, difficulty)) return;
 
     setGameMode(mode);
@@ -182,11 +182,11 @@ function Game() {
   };
 
   // Retry game
-  const handleRetry = async () => {
+  const handleRetry = () => {
     loadGame(gameMode, gameDifficulty);
   };
 
-  const resetBestScore = () => {
+  const handleResetBestScore = () => {
     if (!window.confirm("Reset best score?")) return;
 
     setBestScore((prev) => ({
@@ -243,7 +243,7 @@ function Game() {
           isNewRecord={isNewRecord}
           onReset={handleGameReset}
           onReplay={handleGameReplay}
-          onResetProgress={resetBestScore}
+          onResetProgress={handleResetBestScore}
         />
       )}
     </section>
