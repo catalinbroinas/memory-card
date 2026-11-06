@@ -37,7 +37,7 @@ const MIN_LOADING_TIME = 800;
 function Game() {
   // Game flow state
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.START);
-  
+
   const [gameMode, setGameMode] = useState(null);
   const [gameDifficulty, setGameDifficulty] = useState(null);
 
