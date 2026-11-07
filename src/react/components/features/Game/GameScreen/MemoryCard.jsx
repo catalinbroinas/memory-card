@@ -1,10 +1,12 @@
+import { createRipple } from "../../../../utils/ripple";
 
 function MemoryCard({ name, imageUrl, onSelect}) {
   return (
     <button 
-      className="card memory-card"
+      className="card memory-card ripple"
       type="button"
       onClick={onSelect}
+      onPointerDown={createRipple}
     >
       <img
         src={imageUrl}

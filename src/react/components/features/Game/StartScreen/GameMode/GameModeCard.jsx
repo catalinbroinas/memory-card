@@ -1,12 +1,14 @@
+import { createRipple } from "../../../../../utils/ripple";
 
 function GameModeCard({ mode, onSelect }) {
   const { label, description, imageUrl } = mode;
 
   return (
     <button
-      className="card game-mode-card"
+      className="card game-mode-card ripple"
       type="button"
       onClick={onSelect}
+      onPointerDown={createRipple}
     >
       <img src={imageUrl} alt="" className="card-img" />
 

@@ -1,4 +1,5 @@
 import { difficulties } from "../../../../data/difficultyOptions";
+import { createRipple } from "../../../../utils/ripple";
 
 function GameDifficulty({ onSelectDifficulty }) {
   return (
@@ -11,9 +12,10 @@ function GameDifficulty({ onSelectDifficulty }) {
         {difficulties.map((option) => (
           <button
             key={option.id}
-            className="game-difficulty__card"
+            className="game-difficulty__card ripple"
             type="button"
             onClick={() => onSelectDifficulty(option.id)}
+            onPointerDown={createRipple}
           >
             <span className="game-difficulty__card-title">
               {option.label}
