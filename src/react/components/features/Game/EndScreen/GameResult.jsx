@@ -24,32 +24,28 @@ function GameResult({
         {result.title}
       </h3>
 
-      <ul className="game-result__list">
-        <li className="game-result__item">
-          <span className="game-result__label">Game mode:</span>
-          <strong className="game-result__value">{mode}</strong>
+      <ul className="game-result__info">
+        <li className="game-result__info-item">{mode}</li>
+        <li className="game-result__info-item">{difficulty}</li>
+      </ul>
+
+      <ul className="game-result__scores">
+        <li className="game-result__score">
+          <span className="game-result__label">Your score</span>
+
+          <strong className="game-result__value game-result__value--current">
+            {score}
+          </strong>
         </li>
 
-        <li className="game-result__item">
-          <span className="game-result__label">Difficulty:</span>
-          <strong className="game-result__value">{difficulty}</strong>
-        </li>
+        <li className="game-result__score">
+          <span className="game-result__label">Best score</span>
 
-        <li className="game-result__item">
-          <span className="game-result__label">Your score:</span>
-          <strong className="game-result__value">{score}</strong>
-        </li>
+          <strong className="game-result__value">{bestScore}</strong>
 
-        <li className="game-result__item">
-          <span className="game-result__label">Best score:</span>
-
-          <div className="game-result__value-wrapper">
-            <strong className="game-result__value">{bestScore}</strong>
-
-            {isNewRecord && (
-              <span className="game-result__badge">New record!</span>
-            )}
-          </div>
+          {isNewRecord && (
+            <span className="game-result__badge">New record!</span>
+          )}
         </li>
       </ul>
     </div>
