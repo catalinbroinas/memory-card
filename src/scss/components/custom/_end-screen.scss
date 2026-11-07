@@ -60,6 +60,11 @@
     );
   }
 
+  &__info-item + &__info-item {
+    border-left: 1px solid $secondary;
+    padding-inline: $spacing-md;
+  }
+
   &__scores {
     display: flex;
     flex-wrap: wrap;
