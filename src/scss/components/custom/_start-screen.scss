@@ -67,6 +67,11 @@
     transition: none;
   }
 
+  &__image {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
   &__header {
     display: block;
     height: 100%;

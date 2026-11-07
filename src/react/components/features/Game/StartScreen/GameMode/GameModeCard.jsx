@@ -1,6 +1,6 @@
 import { createRipple } from "../../../../../utils/ripple";
 
-function GameModeCard({ mode, onSelect }) {
+function GameModeCard({ mode, isPriority, onSelect }) {
   const { label, description, imageUrl } = mode;
 
   return (
@@ -10,7 +10,15 @@ function GameModeCard({ mode, onSelect }) {
       onClick={onSelect}
       onPointerDown={createRipple}
     >
-      <img src={imageUrl} alt="" className="card-img" />
+      <img 
+        src={imageUrl}
+        alt=""
+        className="card-img game-mode-card__image"
+        width="640"
+        height="480"
+        decoding="async"
+        fetchPriority={isPriority ? 'high' : 'auto'}
+      />
 
       <span className="card-header game-mode-card__header">
         <span className="card-title game-mode-card__title">{label}</span>
