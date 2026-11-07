@@ -12,11 +12,10 @@ function GameMode({ onSelectMode }) {
       </p>
 
       <ul className="game-mode__action">
-        {Object.values(GAME_MODE).map((mode, index) => (
+        {Object.values(GAME_MODE).map((mode) => (
           <li key={mode.id} className="game-mode__action-item">
             <GameModeCard
               mode={mode}
-              isPriority={index === 0}
               onSelect={() => onSelectMode(mode.id)}
             />
           </li>
