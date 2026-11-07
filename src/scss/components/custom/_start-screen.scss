@@ -52,6 +52,7 @@
 // =================================
 
 .game-mode-card {
+  height: 100%;
   box-shadow: $shadow-sm;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 
@@ -68,6 +69,7 @@
 
   &__header {
     display: block;
+    height: 100%;
     background-color: color.scale($accent, $lightness: 40%);
     padding: calc($spacing-sm + $spacing-xs) $spacing-md;
     border: 0;
